@@ -6,6 +6,7 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.0.10",
     "@mdx-js/react": "^1.0.6",
+    "change-case": "^3.1.0",
     "gatsby": "^2.3.24",
     "gatsby-image": "^2.0.39",
     "gatsby-mdx": "^0.6.2",
@@ -15,6 +16,7 @@
     "gatsby-plugin-sharp": "^2.0.35",
     "gatsby-source-filesystem": "^2.0.29",
     "gatsby-transformer-sharp": "^2.1.18",
+    "medium-zoom": "^1.0.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

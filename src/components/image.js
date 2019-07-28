@@ -1,5 +1,5 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
+import {StaticQuery, graphql} from 'gatsby'
 import Img from 'gatsby-image'
 
 /*
@@ -13,20 +13,51 @@ import Img from 'gatsby-image'
  * - `StaticQuery`: https://gatsby.app/staticquery
  */
 
-const Image = () => (
-  <StaticQuery
-    query={graphql`
+class Image extends React.Component {
+    render() {
+        const { imageName } = this.props;
+        return (
+            <StaticQuery
+                query={graphql`
       query {
-        placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-          childImageSharp {
-            fluid(maxWidth: 300) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
+        allImageSharp {
+         edges {
+             node {
+                 id
+                 fluid(maxWidth: 1000, quality: 65) {
+                    ...GatsbyImageSharpFluid
+                    originalName
+                 }
+             }
+           }
+         }
       }
     `}
-    render={data => <Img fluid={data.placeholderImage.childImageSharp.fluid} />}
-  />
-)
+                render={data => {
+                    console.log(imageName)
+                    // TODO this approach seems a little unperformant. Maybe it happens at build time?
+                    const imgEdge = data.allImageSharp.edges.find((edge) => {
+                        return edge.node.fluid.originalName === imageName;
+                    });
+                    if(imgEdge) {
+                        const { node: {fluid, id}} = imgEdge;
+                        return <div style={{width: 300}}>
+                            <Img
+                                className={`image-${id}`}
+                                fluid={fluid}
+                                onLoad={() => {
+                                    const img = document.querySelector(`.image-${id} picture img`);
+                                    console.log(img)
+                                    img.setAttribute('data-image-id', id);
+                                    img.style.transition = ""; // Hack that prevents image from closing
+                                    window.zoomer.attach(img);
+
+                                }}/>
+                        </div>
+                    }
+                }}
+            />
+        )
+    }
+}
 export default Image
