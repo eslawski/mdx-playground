@@ -45,15 +45,17 @@ class Image extends React.Component {
                     });
                     console.log(imgEdge)
                     if(imgEdge) {
-                        const { node: {lowRes, id}} = imgEdge;
+                        const { node: {lowRes, id, highRes}} = imgEdge;
                         return <div style={{width: 300}}>
                             <Img
                                 className={`image-${id}`}
                                 fluid={lowRes}
                                 onLoad={() => {
                                     const img = document.querySelector(`.image-${id} picture img`);
-                                    console.log(img)
                                     img.setAttribute('data-image-id', id);
+                                    img.setAttribute('data-srcset-hd', highRes.srcSet);
+                                    img.setAttribute('data-sizes-hd', highRes.sizes);
+
                                     img.style.transition = ""; // Hack that prevents image from closing
                                     window.zoomer.attach(img);
 
