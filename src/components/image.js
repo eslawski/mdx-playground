@@ -24,8 +24,13 @@ class Image extends React.Component {
          edges {
              node {
                  id
-                 fluid(maxWidth: 1000, quality: 65) {
+                 lowRes: fluid(maxWidth: 700, quality: 65) {
                     ...GatsbyImageSharpFluid
+                    originalName
+                 }
+                 highRes: fluid(maxWidth: 1000, quality: 80) {
+                    srcSet
+                    sizes
                     originalName
                  }
              }
@@ -37,18 +42,21 @@ class Image extends React.Component {
                     console.log(imageName)
                     // TODO this approach seems a little unperformant. Maybe it happens at build time?
                     const imgEdge = data.allImageSharp.edges.find((edge) => {
-                        return edge.node.fluid.originalName === imageName;
+                        return edge.node.lowRes.originalName === imageName;
                     });
+                    console.log(imgEdge)
                     if(imgEdge) {
-                        const { node: {fluid, id}} = imgEdge;
+                        const { node: {lowRes, id, highRes}} = imgEdge;
                         return <div style={{width: 300}}>
                             <Img
                                 className={`image-${id}`}
-                                fluid={fluid}
+                                fluid={lowRes}
                                 onLoad={() => {
                                     const img = document.querySelector(`.image-${id} picture img`);
-                                    console.log(img)
                                     img.setAttribute('data-image-id', id);
+                                    img.setAttribute('data-srcset-hd', highRes.srcSet);
+                                    img.setAttribute('data-sizes-hd', highRes.sizes);
+
                                     img.style.transition = ""; // Hack that prevents image from closing
                                     window.zoomer.attach(img);
 

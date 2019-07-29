@@ -236,16 +236,22 @@ const mediumZoom = (selector, options = {}) => {
                 viewportHeight || container.height - zoomOptions.margin * 2
 
             const zoomTarget = active.zoomedHd || active.original
-            const naturalWidth = isSvg(zoomTarget)
-                ? viewportWidth
-                : zoomTarget.naturalWidth || viewportWidth
-            const naturalHeight = isSvg(zoomTarget)
-                ? viewportHeight
-                : zoomTarget.naturalHeight || viewportHeight
+
+            // CUSTOM: Do not take the natural width of the image into consideration. Instead
+            // just show the image in fullscreen mode.
+            // const naturalWidth = isSvg(zoomTarget)
+            //     ? viewportWidth
+            //     : zoomTarget.naturalWidth || viewportWidth
+            // const naturalHeight = isSvg(zoomTarget)
+            //     ? viewportHeight
+            //     : zoomTarget.naturalHeight || viewportHeight
             const { top, left, width, height } = zoomTarget.getBoundingClientRect()
 
-            const scaleX = Math.min(naturalWidth, viewportWidth) / width
-            const scaleY = Math.min(naturalHeight, viewportHeight) / height
+            // const scaleX = Math.min(naturalWidth, viewportWidth) / width
+            // const scaleY = Math.min(naturalHeight, viewportHeight) / height
+            const scaleX = viewportWidth / width
+            const scaleY = viewportHeight / height
+
             const scale = Math.min(scaleX, scaleY)
             const translateX =
                 (-left +
@@ -373,24 +379,28 @@ const mediumZoom = (selector, options = {}) => {
                 // If an image has a `srcset` attribuet, we don't know the dimensions of the
                 // zoomed (HD) image (like when `data-zoom-src` is specified).
                 // Therefore the approach is quite similar.
+
+
+
                 active.zoomedHd = active.zoomed.cloneNode()
+
+                // CUSTOM: Set the hd parameters.
+                const srcSetHd = active.zoomedHd.getAttribute('data-srcset-hd');
+                const sizesHd = active.zoomedHd.getAttribute('data-sizes-hd');
+                active.zoomedHd.setAttribute('srcset', srcSetHd);
+                active.zoomedHd.setAttribute('sizes', sizesHd);
+
 
                 // Resetting the sizes attribute tells the browser to load the
                 // image best fitting the current viewport size, respecting the `srcset`.
                 // active.zoomedHd.removeAttribute('sizes')
 
-                // Wait for the load event of the hd image. This will fire if the image
-                // is already cached.
-                const loadEventListener = active.zoomedHd.addEventListener(
-                    'load',
-                    () => {
-                        active.zoomedHd.removeEventListener('load', loadEventListener)
-                        active.zoomedHd.classList.add('medium-zoom-image--opened')
-                        active.zoomedHd.addEventListener('click', close)
-                        document.body.appendChild(active.zoomedHd)
-                        _animate()
-                    }
-                )
+                // CUSTOM: Do not wait for image to load before proceeding. We are just going to show the current
+                // low res image we have now, while trying to load the hd version.
+                active.zoomedHd.classList.add('medium-zoom-image--opened');
+                active.zoomedHd.addEventListener('click', close);
+                document.body.appendChild(active.zoomedHd);
+                _animate()
             } else {
                 _animate()
             }

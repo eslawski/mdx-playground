@@ -8,12 +8,7 @@ module.exports = {
     author: '@chrisbiscardi',
   },
   plugins: [
-    {
-      resolve: `gatsby-mdx`,
-      options: {
-        defaultLayouts: { default: path.resolve('./src/components/layout.js') },
-      },
-    },
+    'gatsby-plugin-mdx',
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-filesystem`,
@@ -25,12 +20,14 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
-        path: `${__dirname}/src/pages`
+        name: `post`,
+        path: `${__dirname}/blogs`
       }
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    'gatsby-plugin-lodash',
+    'gatsby-plugin-styled-components',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
