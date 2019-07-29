@@ -13,7 +13,7 @@ class Layout extends React.Component {
         try {
             console.log("width: " + Math.max(document.documentElement.clientWidth, window.innerWidth || 0));
             console.log("pixel density: " + window.devicePixelRatio);
-            import("medium-zoom").then(mediumZoom => {
+            import("./custom-medium-zoom/mediumZoom").then(mediumZoom => {
                 console.log("medium zoom loaded");
                 console.log(mediumZoom);
                 window.zoomer = mediumZoom.default();
