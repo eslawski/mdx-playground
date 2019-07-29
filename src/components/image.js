@@ -24,12 +24,13 @@ class Image extends React.Component {
          edges {
              node {
                  id
-                 lowRes: fluid(maxWidth: 300, quality: 65) {
+                 lowRes: fluid(maxWidth: 700, quality: 65) {
                     ...GatsbyImageSharpFluid
                     originalName
                  }
-                 highRes: fluid(maxWidth: 1300, quality: 90) {
-                    ...GatsbyImageSharpFluid
+                 highRes: fluid(maxWidth: 1000, quality: 80) {
+                    srcSet
+                    sizes
                     originalName
                  }
              }

@@ -2,29 +2,30 @@ import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
 import Image from '../components/image'
-import SEO from '../components/seo'
-import Grid from '../components/grid'
 
+The SEO should probably not be in here but rather the main layout.js component
 <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
 
-# Hi people
+# Welcome
+try going to <Link to="/why-not/">First page</Link>
 
-Welcome to your new Gatsby site.
+TODO
+- Port over the image gallery component. How can you query for images? Maybe this (could also make Image component more performant): https://www.gatsbyjs.org/docs/mdx/writing-pages/#graphql-queries
+- Implement list of posts (in card layout). Checkout out slawski-blog for this.
+- Will you be continuing work in this repo? If so maybe rename it
+- Lots of styling
+- Components for interactive blog images
+- Simplify the logic gatsby-node.js
 
-Now go build something great.
+Great recent example: https://github.com/LekoArts/gatsby-starter-minimal-blog
+
+WHEN IN DOUBT:
+1) Delete .cache dir
+2) Delete public dir
+3) Run a fresh 'gatsby build'
+4) Run 'gatsby serve' to make sure things are looking correct
+4) Should be able to continue using 'gatsby develop'
 
 <div style={{ maxWidth: '300px', marginBottom: '1.45rem' }}>
   <Image imageName="gatsby-astronaut.png"/>
 </div>
-<Link to="/page-2/">Go to page 2</Link>
-
-<Image imageName="1_going_up.jpg"/>
-<Image imageName="1_sign.jpg"/>
-<Image imageName="2_going_up.jpg"/>
-<Image imageName="3.5_going_up.jpg"/>
-<Image imageName="3.7_going_up.jpg"/>
-<Image imageName="3_going_up.jpg"/>
-<Image imageName="4.5_echo_canyon.jpg"/>
-<Image imageName="4_going_up.jpg"/>
-<Image imageName="3_hike_evan.jpg"/>
-
