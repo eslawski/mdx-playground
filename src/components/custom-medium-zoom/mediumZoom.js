@@ -236,16 +236,19 @@ const mediumZoom = (selector, options = {}) => {
                 viewportHeight || container.height - zoomOptions.margin * 2
 
             const zoomTarget = active.zoomedHd || active.original
-            const naturalWidth = isSvg(zoomTarget)
-                ? viewportWidth
-                : zoomTarget.naturalWidth || viewportWidth
-            const naturalHeight = isSvg(zoomTarget)
-                ? viewportHeight
-                : zoomTarget.naturalHeight || viewportHeight
+            // const naturalWidth = isSvg(zoomTarget)
+            //     ? viewportWidth
+            //     : zoomTarget.naturalWidth || viewportWidth
+            // const naturalHeight = isSvg(zoomTarget)
+            //     ? viewportHeight
+            //     : zoomTarget.naturalHeight || viewportHeight
             const { top, left, width, height } = zoomTarget.getBoundingClientRect()
 
-            const scaleX = Math.min(naturalWidth, viewportWidth) / width
-            const scaleY = Math.min(naturalHeight, viewportHeight) / height
+            // const scaleX = Math.min(naturalWidth, viewportWidth) / width
+            // const scaleY = Math.min(naturalHeight, viewportHeight) / height
+            const scaleX = viewportWidth / width
+            const scaleY = viewportHeight / height
+
             const scale = Math.min(scaleX, scaleY)
             const translateX =
                 (-left +
@@ -379,18 +382,11 @@ const mediumZoom = (selector, options = {}) => {
                 // image best fitting the current viewport size, respecting the `srcset`.
                 // active.zoomedHd.removeAttribute('sizes')
 
-                // Wait for the load event of the hd image. This will fire if the image
-                // is already cached.
-                const loadEventListener = active.zoomedHd.addEventListener(
-                    'load',
-                    () => {
-                        active.zoomedHd.removeEventListener('load', loadEventListener)
-                        active.zoomedHd.classList.add('medium-zoom-image--opened')
-                        active.zoomedHd.addEventListener('click', close)
-                        document.body.appendChild(active.zoomedHd)
-                        _animate()
-                    }
-                )
+                // active.zoomedHd.removeEventListener('load', loadEventListener)
+                active.zoomedHd.classList.add('medium-zoom-image--opened');
+                active.zoomedHd.addEventListener('click', close);
+                document.body.appendChild(active.zoomedHd);
+                _animate()
             } else {
                 _animate()
             }

@@ -24,7 +24,11 @@ class Image extends React.Component {
          edges {
              node {
                  id
-                 fluid(maxWidth: 1000, quality: 65) {
+                 lowRes: fluid(maxWidth: 300, quality: 65) {
+                    ...GatsbyImageSharpFluid
+                    originalName
+                 }
+                 highRes: fluid(maxWidth: 1300, quality: 90) {
                     ...GatsbyImageSharpFluid
                     originalName
                  }
@@ -37,14 +41,15 @@ class Image extends React.Component {
                     console.log(imageName)
                     // TODO this approach seems a little unperformant. Maybe it happens at build time?
                     const imgEdge = data.allImageSharp.edges.find((edge) => {
-                        return edge.node.fluid.originalName === imageName;
+                        return edge.node.lowRes.originalName === imageName;
                     });
+                    console.log(imgEdge)
                     if(imgEdge) {
-                        const { node: {fluid, id}} = imgEdge;
+                        const { node: {lowRes, id}} = imgEdge;
                         return <div style={{width: 300}}>
                             <Img
                                 className={`image-${id}`}
-                                fluid={fluid}
+                                fluid={lowRes}
                                 onLoad={() => {
                                     const img = document.querySelector(`.image-${id} picture img`);
                                     console.log(img)
