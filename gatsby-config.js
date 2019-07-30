@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  pathPrefix: "/mdx-playground",
   siteMetadata: {
     title: 'Gatsby Starter MDX Basic',
     description:

@@ -28,7 +28,7 @@ class Image extends React.Component {
                     ...GatsbyImageSharpFluid
                     originalName
                  }
-                 highRes: fluid(maxWidth: 1000, quality: 80) {
+                 highRes: fluid(maxWidth: 1200, quality: 80) {
                     srcSet
                     sizes
                     originalName
