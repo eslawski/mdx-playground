@@ -20,27 +20,26 @@ const PostContent = styled.div`
 function generateImageMap(edges) {
   const imageMap = {};
   edges.forEach(edge => {
-    const { node } = edge;
+    const { node: { childImageSharp } } = edge;
 
-    imageMap[node.lowRes.originalName] = node;
+    imageMap[childImageSharp.lowRes.originalName] = childImageSharp
 
   })
 
   return imageMap
 }
 
-const Post = ({
-                pageContext: {slug},
+const Post = ({ pageContext: {slug},
                 data: {
                   mdx: postNode,
-                  allImageSharp: {edges: imageSharpEdges}
+                  allFile: {edges: allFileEdges}
                 }
               }) => {
   const post = postNode.frontmatter
 
   return (
     <Layout>
-      <ImageMap.Provider value={generateImageMap(imageSharpEdges)}>
+      <ImageMap.Provider value={generateImageMap(allFileEdges)}>
         <Content>
           <Title>Title: "{post.title}"</Title>
           <PostContent>
@@ -64,9 +63,12 @@ export const postQuery = graphql`
         date(formatString: "MM/DD/YYYY")
       }
     }
-    allImageSharp {
-     edges {
-         node {
+    allFile(filter: { relativeDirectory: { regex: "$slug/images/" }}) {
+      edges {
+        node {
+          relativePath
+          relativeDirectory
+          childImageSharp {
              id
              lowRes: fluid(maxWidth: 700, quality: 65) {
                 ...GatsbyImageSharpFluid
@@ -77,8 +79,9 @@ export const postQuery = graphql`
                 sizes
                 originalName
              }
-         }
-       }
-     }
+          }
+        }
+      }
+    }
   }
 `
