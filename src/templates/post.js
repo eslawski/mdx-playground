@@ -1,9 +1,9 @@
 import React from 'react'
 import {Link, graphql} from 'gatsby'
 import styled from 'styled-components'
-import kebabCase from 'lodash/kebabCase'
 import {MDXRenderer} from 'gatsby-plugin-mdx'
 import Layout from "../components/layout";
+import {ImageMap } from "../components/image-map-context"
 
 
 const Content = styled.article`
@@ -37,16 +37,17 @@ const Post = ({
                 }
               }) => {
   const post = postNode.frontmatter
-  const imageMap = generateImageMap(imageSharpEdges);
 
   return (
     <Layout>
-      <Content>
-        <Title>Title: "{post.title}"</Title>
-        <PostContent>
-          <MDXRenderer imageMap={imageMap}>{postNode.body}</MDXRenderer>
-        </PostContent>
-      </Content>
+      <ImageMap.Provider value={generateImageMap(imageSharpEdges)}>
+        <Content>
+          <Title>Title: "{post.title}"</Title>
+          <PostContent>
+            <MDXRenderer>{postNode.body}</MDXRenderer>
+          </PostContent>
+        </Content>
+      </ImageMap.Provider>
     </Layout>
   )
 }
