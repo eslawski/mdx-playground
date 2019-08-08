@@ -1,8 +1,9 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import {ImageMap} from "./image-map-context"
+const uuidv4 = require('uuid/v4');
 
-const Image = ({ imageName }) => {
+const Image = ({ imageName, width = "300px", padding = "1px" }) => {
   return (
     <ImageMap.Consumer>
       {
@@ -13,23 +14,28 @@ const Image = ({ imageName }) => {
             return null;
           }
 
-          const {id, lowRes, highRes} = image;
+          const {lowRes, highRes} = image,
+                id = uuidv4();
+
           return (
-            <div style={{width: 300}}>
-              <Img
-                className={`image-${id}`}
-                fluid={lowRes}
-                onLoad={() => {
-                  const img = document.querySelector(`.image-${id} picture img`);
-                  img.setAttribute('data-image-id', id);
-                  img.setAttribute('data-srcset-hd', highRes.srcSet);
-                  img.setAttribute('data-sizes-hd', highRes.sizes);
+            <Img
+              className={`image-${id}`}
+              fluid={lowRes}
+              onLoad={() => {
+                const img = document.querySelector(`.image-${id} picture img`);
+                img.setAttribute('data-image-id', id);
+                img.setAttribute('data-srcset-hd', highRes.srcSet);
+                img.setAttribute('data-sizes-hd', highRes.sizes);
 
-                  img.style.transition = ""; // Hack that prevents image from closing
-                  window.zoomer.attach(img);
-
-                }}/>
-            </div>
+                img.style.transition = ""; // Hack that prevents image from closing
+                window.zoomer.attach(img);
+              }}
+              style={{
+                width: width,
+                display: "inline-block",
+                verticalAlign: "middle",
+                margin: padding
+              }}/>
           )
         }
       }

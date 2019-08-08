@@ -1,21 +1,39 @@
 import React from 'react'
-import {StaticQuery, graphql} from 'gatsby'
-import Img from 'gatsby-image'
+import Image from "./image"
+import {ImageMap} from "./image-map-context"
 
-/*
- * This component is built using `gatsby-image` to automatically serve optimized
- * images with lazy loading and reduced file sizes. The image is loaded using a
- * `StaticQuery`, which allows us to load the image from directly within this
- * component, rather than having to pass the image data down from pages.
- *
- * For more information, see the docs:
- * - `gatsby-image`: https://gatsby.app/gatsby-image
- * - `StaticQuery`: https://gatsby.app/staticquery
- */
 
-const Grid = ({children}) => (
-  <div style={{backgroundColor: 'blue'}}>
-      {children}
-  </div>
-);
+
+const Grid = ({imageNames, columns = 3, padding = 1}) => {
+  return (
+    <ImageMap.Consumer>
+      {
+        (imageMap) => {
+
+          const images = imageNames.map(imageName => imageMap[imageName])
+          const rows = [];
+
+          for (let i = 0; i < images.length; i += columns) {
+            rows.push(images.slice(i, i + columns))
+          }
+
+          return (
+            <div>
+              {
+                rows.map(row => {
+                  const rowAspectRatioSum = row.reduce((total, image) => total + image.lowRes.aspectRatio, 0);
+                  return row.map((image) => {
+                    const { lowRes } = image;
+                    const width = `calc(${(lowRes.aspectRatio / rowAspectRatioSum) * 100}% - ${columns * padding}px)`;
+                    return <Image imageName={image.lowRes.originalName} width={width}/>
+                  })
+                })
+              }
+            </div>
+          )
+        }
+      }
+    </ImageMap.Consumer>
+    )
+};
 export default Grid;

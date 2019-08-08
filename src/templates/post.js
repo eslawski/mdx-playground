@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import {MDXRenderer} from 'gatsby-plugin-mdx'
 import Layout from "../components/layout";
 import {ImageMap } from "../components/image-map-context"
+import Grid from "../components/grid"
 
 
 const Content = styled.article`
@@ -35,16 +36,18 @@ const Post = ({ pageContext: {slug},
                   allFile: {edges: allFileEdges}
                 }
               }) => {
-  const post = postNode.frontmatter
+  const post = postNode.frontmatter,
+        imageMap = generateImageMap(allFileEdges)
 
   return (
     <Layout>
-      <ImageMap.Provider value={generateImageMap(allFileEdges)}>
+      <ImageMap.Provider value={imageMap}>
         <Content>
           <Title>Title: "{post.title}"</Title>
           <PostContent>
             <MDXRenderer>{postNode.body}</MDXRenderer>
           </PostContent>
+          <Grid imageNames={Object.keys(imageMap)}/>
         </Content>
       </ImageMap.Provider>
     </Layout>
