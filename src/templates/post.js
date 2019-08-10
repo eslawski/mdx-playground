@@ -101,9 +101,11 @@ export const postQuery = graphql`
         }
       }
     }
-    allFile(filter: { relativeDirectory: { eq: $imageDir }}) {
+    allFile(filter: { relativeDirectory: { eq: $imageDir }}, sort: { fields: [birthTime, name], order: DESC }) {
       edges {
         node {
+          name
+          birthTime
           relativePath
           relativeDirectory
           childImageSharp {
