@@ -48,13 +48,22 @@ const HeroContent = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 3em;
-  font-weight: 600;
-  padding: 0 1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
   border-bottom: 2px solid white;
+  line-height: 1.3;
+  
+  font-size: ${props => props.theme.blog.titleFontSize};
+  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+      font-size: ${props => props.theme.blog.titleFontSmall};
+  }
 `
 
 const Date = styled.h2`
+  font-size: ${props => props.theme.blog.dateFontSize};
+  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+      font-size: ${props => props.theme.blog.dateFontSizeSmall};
+  }
 `
 
 const Hero = ({ title, date, image, height }) => {

@@ -14,6 +14,14 @@ const Wrapper = styled.section`
   flex-grow: 1;
 `
 
+const PageHeading = styled.h1`
+  font-size: 5em;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid black;
+`
+
 class BlogIndex extends React.Component {
   render() {
     const {data} = this.props
@@ -24,6 +32,7 @@ class BlogIndex extends React.Component {
     return (
       <Layout>
         <Wrapper>
+          <PageHeading>Blogs</PageHeading>
           <CardList>
             {posts.map(({ node: post }) => (
               <Card

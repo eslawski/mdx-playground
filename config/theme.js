@@ -20,7 +20,11 @@ const blog = {
   fontSizeSmall: "1.15em",
   spacing: "1.45rem",
   inlineMediaWidth: "70%",
-  inlineMediaWidthSmall: "100%"
+  inlineMediaWidthSmall: "100%",
+  titleFontSize: "4em",
+  titleFontSmall: "2.25em",
+  dateFontSize: "1.5em",
+  dateFontSizeSmall: "1em",
 }
 
 const theme = {
