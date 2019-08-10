@@ -5,6 +5,13 @@ import styled from 'styled-components'
 const Menu = styled.header`
   background: black;
   width: 100%;
+  display: flex;
+  justify-content: center;
+`
+
+const InnerMenu = styled.ul`
+  width: 100%;
+  max-width: ${props => props.theme.maxWidth};
 `
 
 const linkStyle = {
@@ -19,13 +26,13 @@ const linkStyle = {
 const Header = () => {
   return (
     <Menu>
-      <ul>
+      <InnerMenu>
         <li>
           <Link to="/" style={linkStyle}>
             Home
           </Link>
         </li>
-      </ul>
+      </InnerMenu>
     </Menu>
   )
 }
