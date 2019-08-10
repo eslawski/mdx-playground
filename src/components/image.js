@@ -3,7 +3,7 @@ import Img from 'gatsby-image'
 import {ImageMap} from "./image-map-context"
 const uuidv4 = require('uuid/v4');
 
-const Image = ({ imageName, width = "100%", padding = 1 }) => {
+const Image = ({ imageName, width = "100%", margin = 1 }) => {
   return (
     <ImageMap.Consumer>
       {
@@ -34,7 +34,7 @@ const Image = ({ imageName, width = "100%", padding = 1 }) => {
                 width: width,
                 display: "inline-block",
                 verticalAlign: "middle",
-                margin: padding
+                margin: margin
               }}/>
           )
         }

@@ -27,7 +27,7 @@ const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName}) => {
           const topImage = imageMap[topImageName],
                 bottomImage = imageMap[bottomImageName],
                 portraitImage = imageMap[portraitImageName];
-          const trifectaWidth = 700;
+          const trifectaWidth = "70%";
 
 
           /**
@@ -68,6 +68,7 @@ const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName}) => {
           return (
             <Grid style={{
               width: trifectaWidth,
+              margin: "auto auto",
               display: "grid",
               gridTemplateColumns: gridType.templateColumns,
               gridTemplateAreas: gridType.gridAreas,

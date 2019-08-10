@@ -43,7 +43,7 @@ const Post = ({ pageContext: {slug},
     <Layout>
       <ImageMap.Provider value={imageMap}>
         <Content>
-          <Title>Title: "{post.title}"</Title>
+          <Title>{post.title}</Title>
           <PostContent>
             <MDXRenderer>{postNode.body}</MDXRenderer>
           </PostContent>
