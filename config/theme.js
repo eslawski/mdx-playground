@@ -15,11 +15,19 @@ const breakpoints = {
   phone: '600px',
 }
 
+const blog = {
+  fontSize: "1.25em",
+  fontSizeSmall: "1.15em",
+  spacing: "1.45rem",
+  inlineMediaWidth: "70%",
+  inlineMediaWidthSmall: "100%"
+}
+
 const theme = {
   colors,
   breakpoints,
-  maxWidth: '1000px',
-  baseFontSize: '18px',
+  blog,
+  maxWidth: '1000px'
 }
 
 export default theme

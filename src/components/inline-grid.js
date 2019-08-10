@@ -6,13 +6,19 @@ import styled from 'styled-components'
 const CenteredDiv = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 1.45rem;
+  margin-bottom: ${props => props.theme.blog.spacing};
+  margin: auto;
+
+  width: ${props => props.theme.blog.inlineMediaWidth};
+  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+      width: ${props => props.theme.blog.inlineMediaWidthSmall};
+  }
 `
 
 const InlineGrid = ({ imageNames, columns, spacing }) => {
   return (
     <CenteredDiv>
-      <Grid imageNames={imageNames} width={"70%"} columns={columns} spacing={spacing}/>
+      <Grid imageNames={imageNames} columns={columns} spacing={spacing}/>
     </CenteredDiv>
   )
 }

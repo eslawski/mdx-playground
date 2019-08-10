@@ -11,7 +11,12 @@ const Grid = styled.div`
   grid-template-columns: ${props => props.gridConfig.templateColumns};
   grid-template-areas: ${props => props.gridConfig.gridAreas};
   grid-gap: 2px;
-  margin-bottom: 1.45rem;
+  margin-bottom: ${props => props.theme.blog.spacing};
+  
+    width: ${props => props.theme.blog.inlineMediaWidth};
+  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+      width: ${props => props.theme.blog.inlineMediaWidthSmall};
+  }
 `
 
 const TopImage = styled.div`
@@ -34,7 +39,6 @@ const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName}) => {
           const topImage = imageMap[topImageName],
                 bottomImage = imageMap[bottomImageName],
                 portraitImage = imageMap[portraitImageName];
-          const trifectaWidth = "70%";
 
 
           /**

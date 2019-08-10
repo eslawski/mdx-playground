@@ -18,12 +18,22 @@ const GridWrapper = styled.div`
 
 const AllImagesTitle = styled.h2`
   margin: 1rem;
+  font-size: 2em;
+  font-weight: bold;
 `
 
 const PostContent = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
   padding: 2rem 1.0875rem 1.45rem;
+  & > p {
+    font-size: ${props => props.theme.blog.fontSize};
+    margin-bottom: ${props => props.theme.blog.spacing};
+    
+    @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+      font-size: ${props => props.theme.blog.fontSizeSmall};
+    }
+  }
 `
 
 function generateImageMap(edges) {
@@ -79,7 +89,7 @@ export const postQuery = graphql`
         date(formatString: "MM/DD/YYYY")
         image {
           childImageSharp {
-            fluid(maxWidth: 1200, quality: 65) {
+            fluid(maxWidth: 1500, quality: 90) {
                 ...GatsbyImageSharpFluid
              }
           }

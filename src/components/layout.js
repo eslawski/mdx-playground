@@ -4,9 +4,9 @@ import {StaticQuery, graphql} from 'gatsby'
 
 import theme from '../../config/theme'
 import Header from './header'
-import styled, {ThemeProvider, createGlobalStyle} from 'styled-components'
-import './layout.css'
+import styled, {ThemeProvider} from 'styled-components'
 import './custom-medium-zoom/mediumZoomStyles.css'
+import GlobalStyle from '../styles/global'
 
 
 class Layout extends React.Component {
@@ -20,13 +20,12 @@ class Layout extends React.Component {
   render() {
     const {children} = this.props;
     return (
-      <ThemeProvider theme={theme}>
-        <>
-          <div>
-            {children}
-          </div>
-        </>
-      </ThemeProvider>
+      <>
+        <ThemeProvider theme={theme}>
+          <>{children}</>
+        </ThemeProvider>
+        <GlobalStyle/>
+      </>
     )
   }
 }
