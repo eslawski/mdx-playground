@@ -61,7 +61,7 @@ const Post = ({ pageContext: {slug},
               }) => {
   const post = postNode.frontmatter,
         imageMap = generateImageMap(allFileEdges)
-  console.log(post)
+  console.log(allFileEdges)
 
   return (
     <Layout>
@@ -101,7 +101,7 @@ export const postQuery = graphql`
         }
       }
     }
-    allFile(filter: { relativeDirectory: { eq: $imageDir }}, sort: { fields: [birthTime, name], order: DESC }) {
+    allFile(filter: { relativeDirectory: { eq: $imageDir }}, sort: { fields: [name], order: ASC }) {
       edges {
         node {
           name

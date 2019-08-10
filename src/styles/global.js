@@ -54,9 +54,6 @@ const GlobalStyle = createGlobalStyle`
       overflow-x: hidden;
     }
   }
-  ol, ul, li {
-    list-style: none;
-  }
   blockquote, q {
     quotes: none;
   }
@@ -133,6 +130,17 @@ const GlobalStyle = createGlobalStyle`
       left: 10px;
       top: -10px;
     }
+  }
+  strong {
+    font-weight: bold;
+  }
+  h4 {
+    font-size: 1.15em;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  ul li {
+    list-style-position: inside;
   }
   
 `
