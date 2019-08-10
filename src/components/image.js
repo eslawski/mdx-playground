@@ -3,7 +3,7 @@ import Img from 'gatsby-image'
 import {ImageMap} from "./image-map-context"
 const uuidv4 = require('uuid/v4');
 
-const Image = ({ imageName, width = "300px", padding = "1px" }) => {
+const Image = ({ imageName, width = 300, padding = 1 }) => {
   return (
     <ImageMap.Consumer>
       {

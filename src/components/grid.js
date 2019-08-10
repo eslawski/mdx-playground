@@ -24,7 +24,8 @@ const Grid = ({imageNames, columns = 3, padding = 1}) => {
                   const rowAspectRatioSum = row.reduce((total, image) => total + image.lowRes.aspectRatio, 0);
                   return row.map((image) => {
                     const { lowRes } = image;
-                    const width = `calc(${(lowRes.aspectRatio / rowAspectRatioSum) * 100}% - ${columns * padding}px)`;
+                    const width = `calc(${(lowRes.aspectRatio / rowAspectRatioSum)} * (100% - ${padding*columns*2}px))`;
+                    console.log(width)
                     return <Image imageName={image.lowRes.originalName} width={width}/>
                   })
                 })
