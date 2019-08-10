@@ -27,15 +27,14 @@ const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName}) => {
           const topImage = imageMap[topImageName],
                 bottomImage = imageMap[bottomImageName],
                 portraitImage = imageMap[portraitImageName];
-          const padding = 1;
-          const trifectaWidth = 500;
-
-          console.log("top image: " + topImage.lowRes.aspectRatio)
-          console.log("bottom image: " + bottomImage.lowRes.aspectRatio)
-          console.log("portrait image: " + portraitImage.lowRes.aspectRatio)
+          const trifectaWidth = 700;
 
 
-
+          /**
+           * There is a slight bug with the portrait image being too short because it does not take into account
+           * the height of the grid gap between the two landscape images. The math is somewhat complex, but I think it
+           * can be simplified. Check out this article: https://medium.com/buildit/hardcore-css-calc-bdfb0162993c
+           **/
           const combinedLandscapeHeight = (bottomImage.lowRes.presentationHeight * 2)
           const combinedLandscapeAspectRatio = bottomImage.lowRes.presentationWidth / combinedLandscapeHeight
           const targetHeight = (portraitImage.lowRes.presentationHeight + bottomImage.lowRes.presentationHeight) / 2;
@@ -47,31 +46,32 @@ const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName}) => {
           const portraitPercent = (portraitWidth / (portraitWidth + bottomWidth)) * 100
           const bottomPercent = 100 - portraitPercent
 
-          const calcString = `calc()`
+          const configurations = {
+            leftPortrait: {
+              gridAreas: `
+                "portrait-image top-image"
+                "portrait-image bottom-image"
+              `,
+              templateColumns: `${portraitPercent}fr ${bottomPercent}fr`
+            },
+            rightPortrait: {
+              gridAreas: `
+                "top-image portrait-image"
+                "bottom-image portrait-image"
+              `,
+              templateColumns: `${bottomPercent}fr ${portraitPercent}fr`
+            }
+          }
 
-          //
-          // const aspectRatioWidth = bottomImage.lowRes.aspectRatio + portraitImage.lowRes.aspectRatio;
-          // const targetHeight = (portraitImage.lowRes.presentationHeight + bottomImage.lowRes.presentationHeight) / 2;
-          // const portraitWidth = (portraitImage.lowRes.aspectRatio) * (targetHeight/portraitImage.lowRes.presentationHeight) * 100;
-          //
-          // const bottomWidth = 100 - portraitWidth;
-          console.log("PORTRAIT WIDTH: " + portraitPercent)
-          console.log("Bottom WIDTH: " + bottomPercent)
-
-
+          const gridType = configurations.leftPortrait
 
           return (
             <Grid style={{
               width: trifectaWidth,
               display: "grid",
-              gridTemplateColumns: `${bottomPercent}fr ${portraitPercent}fr`,
-              gridTemplateAreas: `
-                                  "top-image portrait-image"
-                                  "bottom-image portrait-image"
-
-              `,
-              gridRowGap: 2,
-              gridColumnGap: 2
+              gridTemplateColumns: gridType.templateColumns,
+              gridTemplateAreas: gridType.gridAreas,
+              gridGap: 2,
             }}>
               <TopImage><Image imageName={topImageName} padding={0}/></TopImage>
               <BottomImage><Image imageName={bottomImageName} padding={0}/></BottomImage>
