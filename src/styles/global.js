@@ -109,5 +109,9 @@ const GlobalStyle = createGlobalStyle`
   p {
     line-height: 1.6;
   }
+  header ul li a:hover {
+    background-color: green;
+  }
+  
 `
 export default GlobalStyle

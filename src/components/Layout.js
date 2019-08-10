@@ -22,7 +22,10 @@ class Layout extends React.Component {
     return (
       <>
         <ThemeProvider theme={theme}>
-          <>{children}</>
+          <>
+            <Header/>
+            {children}
+          </>
         </ThemeProvider>
         <GlobalStyle/>
       </>
