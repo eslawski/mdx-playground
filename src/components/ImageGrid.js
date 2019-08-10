@@ -1,6 +1,6 @@
 import React from 'react'
-import Image from "./image"
-import {ImageMap} from "./image-map-context"
+import Image from "./Image"
+import {ImageMap} from "./contexts/image-map-context"
 
 
 

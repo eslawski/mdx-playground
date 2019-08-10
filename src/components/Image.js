@@ -1,6 +1,6 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import {ImageMap} from "./image-map-context"
+import {ImageMap} from "./contexts/image-map-context"
 const uuidv4 = require('uuid/v4');
 
 const Image = ({ imageName, width = "100%", margin = 1 }) => {

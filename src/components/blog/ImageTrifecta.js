@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import Image from "./image"
-import {ImageMap} from "./image-map-context"
+import Image from "../Image"
+import {ImageMap} from "../contexts/image-map-context"
 
 
 const Grid = styled.div`

@@ -2,10 +2,10 @@ import React from 'react'
 import {Link, graphql} from 'gatsby'
 import styled from 'styled-components'
 import {MDXRenderer} from 'gatsby-plugin-mdx'
-import Layout from "../components/layout";
-import {ImageMap } from "../components/image-map-context"
-import Grid from "../components/grid"
-import Hero from "../components/hero"
+import Layout from "../components/Layout";
+import {ImageMap } from "../components/contexts/image-map-context"
+import Grid from "../components/ImageGrid"
+import Hero from "../components/Hero"
 
 
 const Content = styled.article`
