@@ -1,4 +1,5 @@
-const _ = require('lodash')
+const { createFilePath } = require(`gatsby-source-filesystem`)
+
 
 // graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
 const wrapper = promise =>
@@ -9,24 +10,12 @@ const wrapper = promise =>
     return result
   })
 
-exports.onCreateNode = ({ node, actions }) => {
+exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions
 
-  // TODO I think this can all be simplified
-  let slug
-
   if (node.internal.type === 'Mdx') {
-    if (
-      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, 'slug')
-    ) {
-      slug = `/${_.kebabCase(node.frontmatter.slug)}`
-    } else if (
-      Object.prototype.hasOwnProperty.call(node, 'frontmatter') &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, 'title')
-    ) {
-      slug = `/${_.kebabCase(node.frontmatter.title)}`
-    }
+    const slug = createFilePath({ node, getNode, basePath: `blogs` })
+    console.log("Path created: " + slug)
     createNodeField({ node, name: 'slug', value: slug })
   }
 }
@@ -61,12 +50,12 @@ exports.createPages = async ({ graphql, actions }) => {
     const next = index === 0 ? null : posts[index - 1]
     const prev = index === posts.length - 1 ? null : posts[index + 1]
 
-    console.log("PAGE: " + n.fields.slug)
     createPage({
       path: n.fields.slug,
       component: postTemplate,
       context: {
         slug: n.fields.slug,
+        imageDir: n.fields.slug.concat("images").substring(1),
         prev,
         next,
       },

@@ -113,5 +113,27 @@ const GlobalStyle = createGlobalStyle`
     background-color: green;
   }
   
+  blockquote {
+    font-size: 1.4em;
+    width: 60%;
+    margin: 50px auto;
+    font-style: italic;
+    color: #555555;
+    padding: 1.2em 30px 1.2em 75px;
+    border-left: 8px solid green;
+    line-height: 1.6;
+    position: relative;
+    background: #EDEDED;
+    
+    &::before {
+      content: "\\201C";
+      color: green;
+      font-size: 4em;
+      position: absolute;
+      left: 10px;
+      top: -10px;
+    }
+  }
+  
 `
 export default GlobalStyle

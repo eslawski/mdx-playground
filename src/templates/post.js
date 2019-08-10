@@ -85,7 +85,7 @@ const Post = ({ pageContext: {slug},
 export default Post
 
 export const postQuery = graphql`
-  query postBySlug($slug: String!) {
+  query postBySlug($slug: String!, $imageDir: String!) {
     mdx(fields: { slug: { eq: $slug} }) {
       body
       excerpt
@@ -101,7 +101,7 @@ export const postQuery = graphql`
         }
       }
     }
-    allFile(filter: { relativeDirectory: { regex: "$slug/images/" }}) {
+    allFile(filter: { relativeDirectory: { eq: $imageDir }}) {
       edges {
         node {
           relativePath
