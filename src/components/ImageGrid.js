@@ -4,7 +4,7 @@ import {ImageMap} from "./contexts/image-map-context"
 
 
 
-const Grid = ({imageNames, columns = 3, spacing = 1, width = "100%"}) => {
+const ImageGrid = ({imageNames, columns = 4, spacing = 1, width = "100%"}) => {
   return (
     <div style={{width: width}}>
       <ImageMap.Consumer>
@@ -39,4 +39,4 @@ const Grid = ({imageNames, columns = 3, spacing = 1, width = "100%"}) => {
     </div>
     )
 };
-export default Grid;
+export default ImageGrid;

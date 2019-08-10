@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import {MDXRenderer} from 'gatsby-plugin-mdx'
 import Layout from "../components/Layout";
 import {ImageMap } from "../components/contexts/image-map-context"
-import Grid from "../components/ImageGrid"
+import ImageGrid from "../components/ImageGrid"
 import Hero from "../components/Hero"
 
 
@@ -12,14 +12,19 @@ const Content = styled.article`
 `
 
 const GridWrapper = styled.div`
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: ${props => props.theme.blog.allImagesSectionPadding};
+  padding-right: ${props => props.theme.blog.allImagesSectionPadding};
+  
+  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+    padding-left: ${props => props.theme.blog.allImagesSectionPaddingSmall};
+    padding-right: ${props => props.theme.blog.allImagesSectionPaddingSmall};
+  }
 `
 
 const AllImagesTitle = styled.h2`
-  margin: 1rem;
   font-size: 2em;
   font-weight: bold;
+  margin-bottom: 1rem;
 `
 
 const PostContent = styled.div`
@@ -67,9 +72,9 @@ const Post = ({ pageContext: {slug},
             <MDXRenderer>{postNode.body}</MDXRenderer>
           </PostContent>
 
-          <AllImagesTitle>All Images</AllImagesTitle>
           <GridWrapper>
-            <Grid imageNames={Object.keys(imageMap)}/>
+            <AllImagesTitle>All Images</AllImagesTitle>
+            <ImageGrid imageNames={Object.keys(imageMap)}/>
           </GridWrapper>
         </Content>
       </ImageMap.Provider>

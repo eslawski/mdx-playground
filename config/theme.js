@@ -25,6 +25,8 @@ const blog = {
   titleFontSmall: "2.25em",
   dateFontSize: "1.5em",
   dateFontSizeSmall: "1em",
+  allImagesSectionPadding: "3em",
+  allImagesSectionPaddingSmall: "1em"
 }
 
 const theme = {

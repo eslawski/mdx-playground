@@ -1,5 +1,5 @@
 import React from 'react'
-import Grid from "../ImageGrid"
+import ImageGrid from "../ImageGrid"
 import styled from 'styled-components'
 
 
@@ -19,7 +19,7 @@ const CenteredDiv = styled.div`
 const InlineGrid = ({ imageNames, columns, spacing }) => {
   return (
     <CenteredDiv>
-      <Grid imageNames={imageNames} columns={columns} spacing={spacing}/>
+      <ImageGrid imageNames={imageNames} columns={columns} spacing={spacing}/>
     </CenteredDiv>
   )
 }
