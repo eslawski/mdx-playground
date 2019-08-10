@@ -5,6 +5,7 @@ import {MDXRenderer} from 'gatsby-plugin-mdx'
 import Layout from "../components/layout";
 import {ImageMap } from "../components/image-map-context"
 import Grid from "../components/grid"
+import Hero from "../components/hero"
 
 
 const Content = styled.article`
@@ -15,7 +16,9 @@ const Title = styled.h1`
 `
 
 const PostContent = styled.div`
-  margin-top: 4rem;
+  max-width: ${props => props.theme.maxWidth};
+  margin: 0 auto;
+  padding: 2rem 1.0875rem 1.45rem;
 `
 
 function generateImageMap(edges) {
@@ -38,12 +41,13 @@ const Post = ({ pageContext: {slug},
               }) => {
   const post = postNode.frontmatter,
         imageMap = generateImageMap(allFileEdges)
+  console.log(post)
 
   return (
     <Layout>
+      <Hero title={post.title} date={post.date} image={post.image.childImageSharp} height={"50vw"}/>
       <ImageMap.Provider value={imageMap}>
         <Content>
-          <Title>{post.title}</Title>
           <PostContent>
             <MDXRenderer>{postNode.body}</MDXRenderer>
           </PostContent>
@@ -64,6 +68,13 @@ export const postQuery = graphql`
       frontmatter {
         title
         date(formatString: "MM/DD/YYYY")
+        image {
+          childImageSharp {
+            fluid(maxWidth: 1200, quality: 65) {
+                ...GatsbyImageSharpFluid
+             }
+          }
+        }
       }
     }
     allFile(filter: { relativeDirectory: { regex: "$slug/images/" }}) {
