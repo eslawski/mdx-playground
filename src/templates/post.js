@@ -76,6 +76,8 @@ export const postQuery = graphql`
              lowRes: fluid(maxWidth: 700, quality: 65) {
                 ...GatsbyImageSharpFluid
                 originalName
+                presentationWidth
+                presentationHeight
              }
              highRes: fluid(maxWidth: 1200, quality: 80) {
                 srcSet
