@@ -31,7 +31,7 @@ const PortraitImage = styled.div`
   grid-area: portrait-image
 `;
 
-const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName}) => {
+const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName, orientation = 'right'}) => {
   return (
     <ImageMap.Consumer>
       {
@@ -74,7 +74,7 @@ const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName}) => {
             }
           }
 
-          const gridConfig = configurations.leftPortrait
+          const gridConfig = orientation === 'right' ? configurations.rightPortrait : configurations.leftPortrait
 
           return (
             <Grid gridConfig={gridConfig}>

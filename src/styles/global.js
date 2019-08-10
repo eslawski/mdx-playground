@@ -143,5 +143,22 @@ const GlobalStyle = createGlobalStyle`
     list-style-position: inside;
   }
   
+  .video-wrapper {
+    position:relative;
+    padding-bottom:56.25%;
+    padding-top:30px;
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+    
+    iframe, object, embeded {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+    }
+}
+  
 `
 export default GlobalStyle
