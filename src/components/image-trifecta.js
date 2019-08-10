@@ -5,6 +5,13 @@ import {ImageMap} from "./image-map-context"
 
 
 const Grid = styled.div`
+  width: 70%;
+  margin: auto auto;
+  display: grid;
+  grid-template-columns: ${props => props.gridConfig.templateColumns};
+  grid-template-areas: ${props => props.gridConfig.gridAreas};
+  grid-gap: 2px;
+  margin-bottom: 1.45rem;
 `
 
 const TopImage = styled.div`
@@ -63,20 +70,13 @@ const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName}) => {
             }
           }
 
-          const gridType = configurations.leftPortrait
+          const gridConfig = configurations.leftPortrait
 
           return (
-            <Grid style={{
-              width: trifectaWidth,
-              margin: "auto auto",
-              display: "grid",
-              gridTemplateColumns: gridType.templateColumns,
-              gridTemplateAreas: gridType.gridAreas,
-              gridGap: 2,
-            }}>
-              <TopImage><Image imageName={topImageName} padding={0}/></TopImage>
-              <BottomImage><Image imageName={bottomImageName} padding={0}/></BottomImage>
-              <PortraitImage><Image imageName={portraitImageName} padding={0}/></PortraitImage>
+            <Grid gridConfig={gridConfig}>
+              <TopImage><Image imageName={topImageName} margin={0}/></TopImage>
+              <BottomImage><Image imageName={bottomImageName} margin={0}/></BottomImage>
+              <PortraitImage><Image imageName={portraitImageName} margin={0}/></PortraitImage>
             </Grid>
           )
         }

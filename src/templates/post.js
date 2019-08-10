@@ -11,8 +11,13 @@ import Hero from "../components/hero"
 const Content = styled.article`
 `
 
-const Title = styled.h1`
-  margin-bottom: 1rem;
+const GridWrapper = styled.div`
+  padding-left: 1rem;
+  padding-right: 1rem;
+`
+
+const AllImagesTitle = styled.h2`
+  margin: 1rem;
 `
 
 const PostContent = styled.div`
@@ -51,7 +56,11 @@ const Post = ({ pageContext: {slug},
           <PostContent>
             <MDXRenderer>{postNode.body}</MDXRenderer>
           </PostContent>
-          <Grid imageNames={Object.keys(imageMap)}/>
+
+          <AllImagesTitle>All Images</AllImagesTitle>
+          <GridWrapper>
+            <Grid imageNames={Object.keys(imageMap)}/>
+          </GridWrapper>
         </Content>
       </ImageMap.Provider>
     </Layout>

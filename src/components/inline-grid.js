@@ -6,6 +6,7 @@ import styled from 'styled-components'
 const CenteredDiv = styled.div`
   display: flex;
   justify-content: center;
+  margin-bottom: 1.45rem;
 `
 
 const InlineGrid = ({ imageNames, columns, spacing }) => {
