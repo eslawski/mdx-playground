@@ -5,17 +5,18 @@ import {ImageMap} from "./image-map-context"
 
 
 const Grid = styled.div`
-
 `
 
 const TopImage = styled.div`
+  grid-area: top-image
 `;
 
 const BottomImage = styled.div`
+  grid-area: bottom-image
 `;
 
 const PortraitImage = styled.div`
-display: flex;
+  grid-area: portrait-image
 `;
 
 const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName}) => {
@@ -60,14 +61,21 @@ const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName}) => {
 
 
           return (
-            <Grid style={{width: trifectaWidth, display: "flex"}}>
-              <div style={{display: "flex", flexDirection: "column", width: `${bottomPercent}%` }}>
-                <TopImage><Image imageName={topImageName} padding={0}/></TopImage>
-                <BottomImage><Image imageName={bottomImageName} padding={0}/></BottomImage>
-              </div>
-              <div style={{width: `${portraitPercent}%`}}>
-                <Image imageName={portraitImageName} padding={0}/>
-              </div>
+            <Grid style={{
+              width: trifectaWidth,
+              display: "grid",
+              gridTemplateColumns: `${bottomPercent}fr ${portraitPercent}fr`,
+              gridTemplateAreas: `
+                                  "top-image portrait-image"
+                                  "bottom-image portrait-image"
+
+              `,
+              gridRowGap: 2,
+              gridColumnGap: 2
+            }}>
+              <TopImage><Image imageName={topImageName} padding={0}/></TopImage>
+              <BottomImage><Image imageName={bottomImageName} padding={0}/></BottomImage>
+              <PortraitImage><Image imageName={portraitImageName} padding={0}/></PortraitImage>
             </Grid>
           )
         }
