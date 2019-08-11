@@ -32,7 +32,7 @@ class BlogIndex extends React.Component {
       <Layout>
         <SEO title={"All Blogs"}/>
         <Wrapper>
-          <PageHeading>Blogs</PageHeading>
+          <PageHeading>Blogs 2</PageHeading>
           <CardList>
             {posts.map(({ node: post }) => (
               <Card
