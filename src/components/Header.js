@@ -12,13 +12,14 @@ const Menu = styled.header`
 const InnerMenu = styled.ul`
   width: 100%;
   max-width: ${props => props.theme.maxWidth};
+  font-size: 1.15rem;
 `
 
 const linkStyle = {
   display: "inline-block",
   color: "white",
   textAlign: "center",
-  padding: "14px 16px",
+  padding: "15px 16px",
   textDecoration: "none",
   fontWeight: "bold"
 }
