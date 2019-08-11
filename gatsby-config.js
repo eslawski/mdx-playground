@@ -20,7 +20,6 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
-    'gatsby-plugin-lodash',
     'gatsby-plugin-styled-components',
     {
       resolve: `gatsby-plugin-manifest`,
