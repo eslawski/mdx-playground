@@ -22,6 +22,8 @@ const blog = {
   spacing: "1.45rem",
   inlineMediaWidth: "70%",
   inlineMediaWidthSmall: "100%",
+  inlineMediaPortraitWidth: "40%",
+  inlineMediaPortraitWidthSmall: "60%",
   titleFontSize: "4em",
   titleFontSmall: "2.25em",
   dateFontSize: "1.5em",

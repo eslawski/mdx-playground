@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from "../Image"
 import styled from 'styled-components'
+import {ImageMap} from "../contexts/image-map-context"
 
 
 const CenteredDiv = styled.div`
@@ -10,17 +11,36 @@ const CenteredDiv = styled.div`
   margin-left: auto;
   margin-right: auto;
   
-  width: ${props => props.theme.blog.inlineMediaWidth};
-  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
-      width: ${props => props.theme.blog.inlineMediaWidthSmall};
-  }
+  ${({isPortrait, theme}) => isPortrait && `
+    width: ${theme.blog.inlineMediaPortraitWidth};
+    @media screen and (max-width: ${theme.breakpoints.phone}) {
+      width: ${theme.blog.inlineMediaPortraitWidthSmall};
+    }
+  `}
+  ${({isPortrait, theme}) => !isPortrait && `
+      width: ${theme.blog.inlineMediaWidth};
+      @media screen and (max-width: ${theme.breakpoints.phone}) {
+        width: ${theme.blog.inlineMediaWidthSmall};
+      }
+  `}
 `
 
 const InlineImage = ({ imageName }) => {
   return (
-    <CenteredDiv>
-      <Image imageName={imageName}/>
-    </CenteredDiv>
+    <ImageMap.Consumer>
+      {
+        imageMap => {
+          const image = imageMap[imageName],
+                isPortrait = image.lowRes.aspectRatio <= .75;
+
+          return (
+            <CenteredDiv isPortrait={isPortrait}>
+              <Image imageName={imageName}/>
+            </CenteredDiv>
+          )
+        }
+      }
+    </ImageMap.Consumer>
   )
 }
 
