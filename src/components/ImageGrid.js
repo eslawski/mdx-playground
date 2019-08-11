@@ -25,7 +25,13 @@ const ImageGrid = ({imageNames, columns = 4, spacing = 1, width = "100%"}) => {
                     const rowAspectRatioSum = row.reduce((total, image) => total + image.lowRes.aspectRatio, 0);
                     return row.map((image, imageIndex) => {
                       const { lowRes } = image;
-                      const width = `calc(${(lowRes.aspectRatio / rowAspectRatioSum)} * (100% - ${spacing*columns*2}px))`;
+
+                      let width = `calc(${(lowRes.aspectRatio / rowAspectRatioSum)} * (100% - ${spacing*columns*2}px))`;
+                      if (row.length === 1) {
+                        // Edge case: adjust the width so the last image is not super blown up
+                        width = `calc(100% / ${columns})`
+                      }
+
                       return <Image key={imageIndex} imageName={image.lowRes.originalName} width={width}/>
                     })
                   })

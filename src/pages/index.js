@@ -4,6 +4,7 @@ import Layout from "../components/Layout"
 import CardList from "../components/CardList"
 import Card from "../components/Card"
 import styled from 'styled-components'
+import SEO from "../components/Seo"
 
 
 const Wrapper = styled.section`
@@ -29,6 +30,7 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout>
+        <SEO title={"All Blogs"}/>
         <Wrapper>
           <PageHeading>Blogs</PageHeading>
           <CardList>

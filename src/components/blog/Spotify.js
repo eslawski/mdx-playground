@@ -20,8 +20,8 @@ const Spotify = ({ songUrl }) => {
         src={songUrl}
         width="300"
         height="80"
-        frameborder="0"
-        allowtransparency="true"
+        frameBorder="0"
+        allowTransparency="true"
         allow="encrypted-media">
       </iframe>
     </CenteredDiv>

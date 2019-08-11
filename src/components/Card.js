@@ -74,7 +74,7 @@ const Card = ({
 
     return (
     <Post>
-      <Link to={`/${slug}/`}>
+      <Link to={`${slug}/`}>
         <Img fluid={image.fluid} backgroundColor={'#eeeeee'} />
         <Title>{title}</Title>
         <DateString>{date}</DateString>

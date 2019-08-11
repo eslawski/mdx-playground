@@ -28,9 +28,9 @@ const Youtube = ({ videoUrl }) => {
             width="560"
             height="315"
             src={videoUrl}
-            frameborder="0"
+            frameBorder="0"
             allow="autoplay; encrypted-media"
-            allowfullscreen>
+            allowFullScreen>
 
           </iframe>
         </div>

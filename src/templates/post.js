@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import {ImageMap } from "../components/contexts/image-map-context"
 import ImageGrid from "../components/ImageGrid"
 import Hero from "../components/Hero"
+import SEO from "../components/Seo"
 
 
 const Content = styled.article`
@@ -64,6 +65,7 @@ const Post = ({ pageContext: {slug},
 
   return (
     <Layout>
+      <SEO title={post.title} description={post.description}/>
       <Hero title={post.title} date={post.date} image={post.image.childImageSharp} height={"50vw"}/>
       <ImageMap.Provider value={imageMap}>
         <Content>
@@ -93,7 +95,7 @@ export const postQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         image {
           childImageSharp {
-            fluid(maxWidth: 1200, quality: 80) {
+            fluid(maxWidth: 1500, quality: 60) {
                 ...GatsbyImageSharpFluid
              }
           }
