@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { createRef }from 'react'
 import Img from 'gatsby-image'
 import {ImageMap} from "./contexts/image-map-context"
 const uuidv4 = require('uuid/v4');
@@ -14,16 +14,16 @@ const Image = ({ imageName, width = "100%", margin = 1 }) => {
             return null;
           }
 
-          const {lowRes, highRes} = image,
-                id = uuidv4();
+          const {lowRes, highRes} = image
+          const ref = createRef()
 
           return (
             <Img
-              className={`image-${id}`}
+              ref={ref}
+              className={`image-${uuidv4()}`}
               fluid={lowRes}
               onLoad={() => {
-                const img = document.querySelector(`.image-${id} picture img`);
-                img.setAttribute('data-image-id', id);
+                const img = ref.current.imageRef.current
                 img.setAttribute('data-srcset-hd', highRes.srcSet);
                 img.setAttribute('data-sizes-hd', highRes.sizes);
 
