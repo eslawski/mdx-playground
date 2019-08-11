@@ -9,12 +9,6 @@ import GlobalStyle from '../styles/global'
 
 
 class Layout extends React.Component {
-  componentDidMount() {
-      console.log("LAYOUT MOUNTED");
-    // Gatsby weirdness: Must skip this when gatsby is building as it's only used by browser.
-    // See https://github.com/gatsbyjs/gatsby/issues/13355
-
-  }
 
   render() {
     const {children} = this.props;

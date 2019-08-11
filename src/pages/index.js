@@ -27,8 +27,6 @@ class BlogIndex extends React.Component {
     const {data} = this.props
     const posts = data.allMdx.edges
 
-    console.log(posts)
-
     return (
       <Layout>
         <Wrapper>
@@ -42,6 +40,7 @@ class BlogIndex extends React.Component {
                 description={post.frontmatter.description}
                 date={post.frontmatter.date}
                 image={post.frontmatter.image.childImageSharp}
+                favorite={post.frontmatter.favorite}
               />
             ))}
           </CardList>
@@ -67,6 +66,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            favorite
             description
             image {
               childImageSharp {

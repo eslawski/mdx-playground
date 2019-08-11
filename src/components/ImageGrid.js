@@ -26,7 +26,6 @@ const ImageGrid = ({imageNames, columns = 4, spacing = 1, width = "100%"}) => {
                     return row.map((image, imageIndex) => {
                       const { lowRes } = image;
                       const width = `calc(${(lowRes.aspectRatio / rowAspectRatioSum)} * (100% - ${spacing*columns*2}px))`;
-                      console.log(width)
                       return <Image key={imageIndex} imageName={image.lowRes.originalName} width={width}/>
                     })
                   })

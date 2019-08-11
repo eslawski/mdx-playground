@@ -61,7 +61,6 @@ const Post = ({ pageContext: {slug},
               }) => {
   const post = postNode.frontmatter,
         imageMap = generateImageMap(allFileEdges)
-  console.log(allFileEdges)
 
   return (
     <Layout>

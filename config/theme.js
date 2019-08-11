@@ -7,8 +7,7 @@ const colors = {
     light: 'rgba(0, 0, 0, 0.5)',
     ultraLight: 'rgba(0, 0, 0, 0.25)',
   },
-  white: 'white',
-  ribbon: 'green'
+  white: 'white'
 }
 
 const breakpoints = {
