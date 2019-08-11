@@ -1,6 +1,5 @@
 import {
     isNode,
-    isSvg,
     getImagesFromSelector,
     createOverlay,
     cloneTarget,

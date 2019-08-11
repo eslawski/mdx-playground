@@ -24,6 +24,7 @@ const Youtube = ({ videoUrl }) => {
     <CenteredDiv>
         <div className="video-wrapper">
           <iframe
+            title={videoUrl}
             width="560"
             height="315"
             src={videoUrl}

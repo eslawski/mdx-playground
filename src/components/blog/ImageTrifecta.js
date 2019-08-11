@@ -36,8 +36,7 @@ const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName, orient
     <ImageMap.Consumer>
       {
         (imageMap) => {
-          const topImage = imageMap[topImageName],
-                bottomImage = imageMap[bottomImageName],
+          const bottomImage = imageMap[bottomImageName],
                 portraitImage = imageMap[portraitImageName];
 
 

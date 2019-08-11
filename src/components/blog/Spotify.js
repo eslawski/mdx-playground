@@ -14,6 +14,7 @@ const Spotify = ({ songUrl }) => {
   return (
     <CenteredDiv>
       <iframe
+        title={songUrl}
         data-song-info=""
         className="embedded-song"
         src={songUrl}

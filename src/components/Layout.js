@@ -1,10 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {StaticQuery, graphql} from 'gatsby'
 
 import theme from '../../config/theme'
 import Header from './Header'
-import styled, {ThemeProvider} from 'styled-components'
+import {ThemeProvider} from 'styled-components'
 import './custom-medium-zoom/mediumZoomStyles.css'
 import GlobalStyle from '../styles/global'
 

@@ -25,6 +25,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const postTemplate = require.resolve('./src/templates/post.js')
   // const categoryTemplate = require.resolve('./src/templates/category.js')
+  // TODO must add categories back into the
 
   const result = await wrapper(
     graphql(`
@@ -36,7 +37,6 @@ exports.createPages = async ({ graphql, actions }) => {
             }
             frontmatter {
               title
-              categories
             }
           }
         }
