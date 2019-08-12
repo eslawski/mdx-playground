@@ -1,7 +1,6 @@
 import React, { createRef }from 'react'
 import Img from 'gatsby-image'
 import {ImageMap} from "./contexts/image-map-context"
-const uuidv4 = require('uuid/v4');
 
 const Image = ({ imageName, width = "100%", margin = 1 }) => {
   return (
@@ -20,7 +19,6 @@ const Image = ({ imageName, width = "100%", margin = 1 }) => {
           return (
             <Img
               ref={ref}
-              className={`image-${uuidv4()}`}
               fluid={lowRes}
               onLoad={() => {
                 const img = ref.current.imageRef.current

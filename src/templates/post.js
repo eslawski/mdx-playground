@@ -95,7 +95,7 @@ export const postQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         image {
           childImageSharp {
-            fluid(maxWidth: 1500, quality: 60) {
+            fluid(maxWidth: 1250, quality: 60) {
                 ...GatsbyImageSharpFluid
              }
           }
@@ -111,7 +111,7 @@ export const postQuery = graphql`
           relativeDirectory
           childImageSharp {
              id
-             lowRes: fluid(maxWidth: 700, quality: 70) {
+             lowRes: fluid(maxWidth: 700, quality: 60) {
                 ...GatsbyImageSharpFluid
                 originalName
                 presentationWidth
