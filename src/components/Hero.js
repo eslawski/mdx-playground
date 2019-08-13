@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
+import {rhythm, scale} from "../styles/typography"
 
 
 const Wrapper = styled.section`
@@ -49,17 +50,18 @@ const HeroContent = styled.div`
 
 const Title = styled.h1`
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0;
+  padding-bottom: ${rhythm(.2)};
   border-bottom: 2px solid white;
-  line-height: 1.3;
   
-  font-size: ${props => props.theme.blog.titleFontSize};
+  ${scale(1.7)}
   @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
       font-size: ${props => props.theme.blog.titleFontSmall};
   }
 `
 
 const Date = styled.h2`
+  font-weight: 300;
   font-size: ${props => props.theme.blog.dateFontSize};
   @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
       font-size: ${props => props.theme.blog.dateFontSizeSmall};

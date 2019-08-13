@@ -13,6 +13,7 @@ const InnerMenu = styled.ul`
   width: 100%;
   max-width: ${props => props.theme.maxWidth};
   font-size: 1.15rem;
+  margin-bottom: 0;
 `
 
 const linkStyle = {
@@ -28,7 +29,7 @@ const Header = () => {
   return (
     <Menu>
       <InnerMenu>
-        <li>
+        <li style={{marginBottom: 0}}>
           <Link to="/" style={linkStyle}>
             Home
           </Link>

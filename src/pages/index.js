@@ -32,7 +32,7 @@ class BlogIndex extends React.Component {
       <Layout>
         <SEO title={"All Blogs"}/>
         <Wrapper>
-          <PageHeading>New Title</PageHeading>
+          <PageHeading>Blogs</PageHeading>
           <CardList>
             {posts.map(({ node: post }) => (
               <Card
@@ -72,7 +72,7 @@ export const pageQuery = graphql`
             description
             image {
               childImageSharp {
-                fluid(maxHeight: 800) {
+                fluid(maxWidth: 350) {
                   ...GatsbyImageSharpFluid
                 }
               }

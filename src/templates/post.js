@@ -13,13 +13,8 @@ const Content = styled.article`
 `
 
 const GridWrapper = styled.div`
-  padding-left: ${props => props.theme.blog.allImagesSectionPadding};
-  padding-right: ${props => props.theme.blog.allImagesSectionPadding};
-  
-  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
-    padding-left: ${props => props.theme.blog.allImagesSectionPaddingSmall};
-    padding-right: ${props => props.theme.blog.allImagesSectionPaddingSmall};
-  }
+  max-width: ${props => props.theme.maxWidthImageSection};
+  margin: auto;
 `
 
 const AllImagesTitle = styled.h2`
@@ -111,16 +106,14 @@ export const postQuery = graphql`
           relativeDirectory
           childImageSharp {
              id
-             lowRes: fluid(maxWidth: 700, quality: 60) {
+             lowRes: fluid(maxWidth: 300, quality: 60) {
                 ...GatsbyImageSharpFluid
                 originalName
                 presentationWidth
                 presentationHeight
              }
-             highRes: fluid(maxWidth: 1000, quality: 80) {
-                srcSet
-                sizes
-                originalName
+             highRes: fluid(maxWidth: 1000, quality: 60) {
+                ...GatsbyImageSharpFluid
              }
           }
         }

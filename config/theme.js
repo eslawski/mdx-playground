@@ -35,7 +35,8 @@ const theme = {
   colors,
   breakpoints,
   blog,
-  maxWidth: '1000px'
+  maxWidth: '1000px',
+  maxWidthImageSection: '1200px'
 }
 
 export default theme

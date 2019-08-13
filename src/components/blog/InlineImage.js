@@ -18,7 +18,7 @@ const CenteredDiv = styled.div`
     }
   `}
   ${({isPortrait, theme}) => !isPortrait && `
-      width: ${theme.blog.inlineMediaWidth};
+      width: 50%;
       @media screen and (max-width: ${theme.breakpoints.phone}) {
         width: ${theme.blog.inlineMediaWidthSmall};
       }
