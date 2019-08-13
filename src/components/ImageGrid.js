@@ -24,15 +24,22 @@ const ImageGrid = ({imageNames, columns = 4, spacing = 1, width = "100%"}) => {
                   rows.map((row) => {
                     const rowAspectRatioSum = row.reduce((total, image) => total + image.lowRes.aspectRatio, 0);
                     return row.map((image, imageIndex) => {
-                      const { lowRes } = image;
+                      const { lowRes } = image,
+                            aspectRatio = lowRes.aspectRatio,
+                            forceHighRes = aspectRatio > 2; // Special consideration for panos
 
-                      let width = `calc(${(lowRes.aspectRatio / rowAspectRatioSum)} * (100% - ${spacing*columns*2}px))`;
+                      let width = `calc(${(aspectRatio / rowAspectRatioSum)} * (100% - ${spacing*columns*2}px))`;
                       if (row.length === 1) {
                         // Edge case: adjust the width so the last image is not super blown up
                         width = `calc(100% / ${columns})`
                       }
 
-                      return <Image key={imageIndex} imageName={image.lowRes.originalName} width={width}/>
+                      return <Image
+                                key={imageIndex}
+                                imageName={image.lowRes.originalName}
+                                width={width}
+                                forceHighRes={forceHighRes}
+                      />
                     })
                   })
                 }

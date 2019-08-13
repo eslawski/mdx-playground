@@ -8,6 +8,7 @@ import ImageGrid from "../components/ImageGrid"
 import Hero from "../components/Hero"
 import SEO from "../components/Seo"
 import MediaQuery from 'react-responsive';
+import { ThemeConsumer } from 'styled-components'
 
 
 const Content = styled.article`
@@ -51,18 +52,16 @@ function generateImageMap(edges) {
   return imageMap
 }
 
-const Post = (props) => {
-  const {pageContext: {slug},
-    data: {
-      mdx: postNode,
-      allFile: {edges: allFileEdges}
-    },
-  } = props;
-  console.log(props)
+const Post = ({pageContext: {slug},
+                data: {
+                  mdx: postNode,
+                  allFile: {edges: allFileEdges}
+                },
+              }) => {
+
   const post = postNode.frontmatter,
         imageMap = generateImageMap(allFileEdges)
 
-  console.log(post.description)
   return (
     <Layout>
       <SEO title={post.title} description={post.description}/>
@@ -75,12 +74,17 @@ const Post = (props) => {
 
           <GridWrapper>
             <AllImagesTitle>All Images</AllImagesTitle>
-            <MediaQuery maxWidth={600}>
-              {(matches) => {
-                let columns = matches ? 3 : 4;
-                return <ImageGrid imageNames={Object.keys(imageMap)} columns={columns}/>
-              }}
-            </MediaQuery>
+            <ThemeConsumer>
+              {(theme) => {
+                  return <MediaQuery maxWidth={theme.breakpoints.phone}>
+                    {(matches) => {
+                      let columns = matches ? 3 : 4;
+                      return <ImageGrid imageNames={Object.keys(imageMap)} columns={columns}/>
+                    }}
+                  </MediaQuery>
+                }
+              }
+            </ThemeConsumer>
           </GridWrapper>
         </Content>
       </ImageMap.Provider>
@@ -101,7 +105,7 @@ export const postQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         image {
           childImageSharp {
-            fluid(maxWidth: 1250, quality: 60) {
+            fluid(maxWidth: 1500, quality: 60) {
                 ...GatsbyImageSharpFluid
              }
           }
@@ -124,8 +128,7 @@ export const postQuery = graphql`
                 presentationHeight
              }
              highRes: fluid(maxWidth: 1000, quality: 60) {
-                srcSet
-                sizes
+                ...GatsbyImageSharpFluid
              }
           }
         }

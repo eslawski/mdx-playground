@@ -2,7 +2,7 @@ import React, { createRef }from 'react'
 import Img from 'gatsby-image'
 import {ImageMap} from "./contexts/image-map-context"
 
-const Image = ({ imageName, width = "100%", margin = 1 }) => {
+const Image = ({ imageName, width = "100%", margin = 1, forceHighRes = false }) => {
   return (
     <ImageMap.Consumer>
       {
@@ -13,8 +13,12 @@ const Image = ({ imageName, width = "100%", margin = 1 }) => {
             return null;
           }
 
-          const {lowRes, highRes} = image
+          let {lowRes, highRes} = image
           const ref = createRef()
+
+          if(forceHighRes) {
+            lowRes = highRes
+          }
 
           return (
             <Img
