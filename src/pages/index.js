@@ -30,7 +30,7 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout>
-        <SEO title={"All Blogs"}/>
+        <SEO title={"All Blogs Test"}/>
         <Wrapper>
           <PageHeading>Blogs</PageHeading>
           <CardList>
