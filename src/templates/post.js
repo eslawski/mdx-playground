@@ -113,7 +113,8 @@ export const postQuery = graphql`
                 presentationHeight
              }
              highRes: fluid(maxWidth: 1000, quality: 60) {
-                ...GatsbyImageSharpFluid
+                srcSet
+                sizes
              }
           }
         }
