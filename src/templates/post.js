@@ -36,7 +36,7 @@ const PostContent = styled.div`
   & > p {
     ${scale(.3)}
       @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
-      ${scale(.01)}
+        ${scale(0)}
     }
   }
 `
