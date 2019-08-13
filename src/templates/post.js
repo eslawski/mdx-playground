@@ -7,12 +7,14 @@ import {ImageMap } from "../components/contexts/image-map-context"
 import ImageGrid from "../components/ImageGrid"
 import Hero from "../components/Hero"
 import SEO from "../components/Seo"
+import MediaQuery from 'react-responsive';
 
 
 const Content = styled.article`
 `
 
 const GridWrapper = styled.div`
+  padding: 0 1rem 2rem 1rem;
   max-width: ${props => props.theme.maxWidthImageSection};
   margin: auto;
 `
@@ -49,15 +51,18 @@ function generateImageMap(edges) {
   return imageMap
 }
 
-const Post = ({ pageContext: {slug},
-                data: {
-                  mdx: postNode,
-                  allFile: {edges: allFileEdges}
-                }
-              }) => {
+const Post = (props) => {
+  const {pageContext: {slug},
+    data: {
+      mdx: postNode,
+      allFile: {edges: allFileEdges}
+    },
+  } = props;
+  console.log(props)
   const post = postNode.frontmatter,
         imageMap = generateImageMap(allFileEdges)
 
+  console.log(post.description)
   return (
     <Layout>
       <SEO title={post.title} description={post.description}/>
@@ -70,7 +75,12 @@ const Post = ({ pageContext: {slug},
 
           <GridWrapper>
             <AllImagesTitle>All Images</AllImagesTitle>
-            <ImageGrid imageNames={Object.keys(imageMap)}/>
+            <MediaQuery maxWidth={600}>
+              {(matches) => {
+                let columns = matches ? 3 : 4;
+                return <ImageGrid imageNames={Object.keys(imageMap)} columns={columns}/>
+              }}
+            </MediaQuery>
           </GridWrapper>
         </Content>
       </ImageMap.Provider>
@@ -87,6 +97,7 @@ export const postQuery = graphql`
       excerpt
       frontmatter {
         title
+        description
         date(formatString: "MMMM DD, YYYY")
         image {
           childImageSharp {
@@ -106,7 +117,7 @@ export const postQuery = graphql`
           relativeDirectory
           childImageSharp {
              id
-             lowRes: fluid(maxWidth: 300, quality: 60) {
+             lowRes: fluid(maxWidth: 350, quality: 70) {
                 ...GatsbyImageSharpFluid
                 originalName
                 presentationWidth

@@ -57,6 +57,7 @@ const Title = styled.h1`
   ${scale(1.7)}
   @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
       font-size: ${props => props.theme.blog.titleFontSmall};
+      line-height: ${rhythm(1.8)}
   }
 `
 

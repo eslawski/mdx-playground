@@ -5,6 +5,8 @@ import CardList from "../components/CardList"
 import Card from "../components/Card"
 import styled from 'styled-components'
 import SEO from "../components/Seo"
+import {rhythm, scale} from "../styles/typography"
+
 
 
 const Wrapper = styled.section`
@@ -16,7 +18,7 @@ const Wrapper = styled.section`
 `
 
 const PageHeading = styled.h1`
-  font-size: 5em;
+  ${scale(1.2)}
   font-weight: bold;
   line-height: 1.3;
   margin-bottom: 2rem;
