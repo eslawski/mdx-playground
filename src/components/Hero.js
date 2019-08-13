@@ -15,11 +15,9 @@ const BgImg = styled(Img)`
   width: 100%;
   z-index: -1;
   min-height: 300px;
-  max-height: 100vh; // clips the height of the image on large screens
+  max-height: calc(100vh - ${props => props.theme.headerHeight}); // clips the height of the image on large screens
   height: auto;
-  @media (min-width: ${props => props.theme.breakpoints.phone}) {
-    height: ${props => props.height || 'auto'};
-  }
+  
   & > img {
     object-fit: ${props => props.fit || 'cover'} !important;
     object-position: ${props => props.position || '50% 50%'} !important;
@@ -69,11 +67,10 @@ const Date = styled.h2`
   }
 `
 
-const Hero = ({ title, date, image, height }) => {
+const Hero = ({ title, date, image }) => {
   return (
     <Wrapper>
       <BgImg
-        height={height}
         fluid={image.fluid}
         backgroundColor={'#eeeeee'}
       />

@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     }
 }
 
-header ul li a:hover {
+header div a:hover {
   background-color: green;
 }
   

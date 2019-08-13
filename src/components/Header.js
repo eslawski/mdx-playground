@@ -7,9 +7,11 @@ const Menu = styled.header`
   width: 100%;
   display: flex;
   justify-content: center;
+  height: ${props => props.theme.headerHeight};;
 `
 
-const InnerMenu = styled.ul`
+const MenuItems = styled.div`
+  display: flex;
   width: 100%;
   max-width: ${props => props.theme.maxWidth};
   font-size: 1.15rem;
@@ -17,24 +19,22 @@ const InnerMenu = styled.ul`
 `
 
 const linkStyle = {
-  display: "inline-block",
+  display: "flex",
   color: "white",
-  textAlign: "center",
-  padding: "15px 16px",
+  alignItems: "center",
   textDecoration: "none",
-  fontWeight: "bold"
+  fontWeight: "bold",
+  padding: "0 15px"
 }
 
 const Header = () => {
   return (
     <Menu>
-      <InnerMenu>
-        <li style={{marginBottom: 0}}>
-          <Link to="/" style={linkStyle}>
-            Home
-          </Link>
-        </li>
-      </InnerMenu>
+      <MenuItems>
+        <Link to="/" style={linkStyle}>
+          Home
+        </Link>
+      </MenuItems>
     </Menu>
   )
 }

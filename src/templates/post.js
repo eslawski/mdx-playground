@@ -9,6 +9,7 @@ import Hero from "../components/Hero"
 import SEO from "../components/Seo"
 import MediaQuery from 'react-responsive';
 import { ThemeConsumer } from 'styled-components'
+import {rhythm, scale} from "../styles/typography"
 
 
 const Content = styled.article`
@@ -21,21 +22,21 @@ const GridWrapper = styled.div`
 `
 
 const AllImagesTitle = styled.h2`
-  font-size: 2em;
+  ${scale(.8)}
   font-weight: bold;
   margin-bottom: 1rem;
+  border-bottom: 2px solid black;
 `
 
 const PostContent = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
   padding: 2rem 1.0875rem 1.45rem;
+  
   & > p {
-    font-size: ${props => props.theme.blog.fontSize};
-    margin-bottom: ${props => props.theme.blog.spacing};
-    
-    @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
-      font-size: ${props => props.theme.blog.fontSizeSmall};
+    ${scale(.3)}
+      @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+      ${scale(.01)}
     }
   }
 `
@@ -65,7 +66,7 @@ const Post = ({pageContext: {slug},
   return (
     <Layout>
       <SEO title={post.title} description={post.description}/>
-      <Hero title={post.title} date={post.date} image={post.image.childImageSharp} height={"50vw"}/>
+      <Hero title={post.title} date={post.date} image={post.image.childImageSharp}/>
       <ImageMap.Provider value={imageMap}>
         <Content>
           <PostContent>
