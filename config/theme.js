@@ -26,7 +26,7 @@ const theme = {
   breakpoints,
   blog,
   headerHeight: "50px",
-  maxWidth: '1000px',
+  maxWidth: '800px',
   maxWidthImageSection: '1200px'
 }
 

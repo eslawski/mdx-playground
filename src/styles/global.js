@@ -1,6 +1,17 @@
 import { createGlobalStyle } from 'styled-components'
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+    font-size: 110%;
+    line-height: 1.75rem;
+    
+      @media screen and (min-width: 600px) {
+        font-size: 120%;
+        line-height: 2rem;
+      }
+  }
+
   .video-wrapper {
     position:relative;
     padding-bottom:56.25%;

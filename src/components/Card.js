@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Ribbon from "./Ribbon"
-import {rhythm, scale} from "../styles/typography"
 
 const Post = styled.li`
   list-style: none;
@@ -42,20 +41,14 @@ const Post = styled.li`
 `
 
 const Title = styled.h3`
-  line-height: ${rhythm(1.2)};
-  margin: ${rhythm(.5)} ${rhythm(.8)} 0 ${rhythm(.5)};
 `
 
 const DateString = styled.h6`
-  ${scale(-.3)}
-  margin: ${rhythm(.1)} ${rhythm(.8)} 0 ${rhythm(.5)};
   color: gray;
 `
 
 
 const Description = styled.h5`
-  ${scale(-.1)}
-  padding: ${rhythm(.2)} ${rhythm(.8)} ${rhythm(.4)} ${rhythm(.5)};
 `
 
 const Card = ({

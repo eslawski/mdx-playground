@@ -9,7 +9,6 @@ import Hero from "../components/Hero"
 import SEO from "../components/Seo"
 import MediaQuery from 'react-responsive';
 import { ThemeConsumer } from 'styled-components'
-import {rhythm, scale} from "../styles/typography"
 
 
 const Content = styled.article`
@@ -22,7 +21,6 @@ const GridWrapper = styled.div`
 `
 
 const AllImagesTitle = styled.h2`
-  ${scale(.8)}
   font-weight: bold;
   margin-bottom: 1rem;
   border-bottom: 2px solid black;
@@ -33,12 +31,6 @@ const PostContent = styled.div`
   margin: 0 auto;
   padding: 2rem 1.0875rem 1.45rem;
   
-  & > p {
-    ${scale(.3)}
-      @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
-        ${scale(0)}
-    }
-  }
 `
 
 function generateImageMap(edges) {
