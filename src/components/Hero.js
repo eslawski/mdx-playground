@@ -47,21 +47,8 @@ const HeroContent = styled.div`
 
 const Title = styled.h1`
   font-weight: bold;
-  margin: 0 0.5rem;
-  font-size: 2rem;
-  line-height: 2rem;
-  
-  @media screen and (min-width: 600px) {
-    font-size: 2.8rem;
-  }
-`
-
-const Number = styled.h2`
-  font-weight: bold;
-  font-size: 3rem;
+  margin-bottom: 0;
   border-bottom: 2px solid white;
-  margin: .6rem 0;
-  line-height: 3.2rem;
 `
 
 const Date = styled.h2`
@@ -80,9 +67,8 @@ const Hero = ({ title, date, image }) => {
         backgroundColor={'#eeeeee'}
       />
       <HeroContent>
-        <Number>12</Number>
         <Title>{title}</Title>
-        {/*<Date>{date}</Date>*/}
+        <Date>{date}</Date>
       </HeroContent>
     </Wrapper>
   )

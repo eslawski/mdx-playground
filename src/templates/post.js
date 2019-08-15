@@ -29,7 +29,8 @@ const AllImagesTitle = styled.h2`
 const PostContent = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
-  padding: 1rem .5rem 1.45rem;
+  padding: 2rem 1.0875rem 1.45rem;
+  
 `
 
 function generateImageMap(edges) {
