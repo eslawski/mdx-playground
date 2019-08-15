@@ -95,7 +95,7 @@ export const postQuery = graphql`
       frontmatter {
         title
         description
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MM/DD/YYYY")
         image {
           childImageSharp {
             fluid(maxWidth: 1500, quality: 60) {

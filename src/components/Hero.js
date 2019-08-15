@@ -8,7 +8,7 @@ const Wrapper = styled.section`
   min-height: 300px;
 `
 const BgImg = styled(Img)`
-  position: absolute
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -47,15 +47,23 @@ const HeroContent = styled.div`
 
 const Title = styled.h1`
   font-weight: bold;
-  margin-bottom: 0;
   border-bottom: 2px solid white;
+  margin: 0;
+  line-height: 1.5;
+  
+  @media screen and (min-width: 600px) {
+    font-size: 2.5rem;
+    line-height: 1.3;
+  }
 `
 
-const Date = styled.h2`
+const Date = styled.h4`
   font-weight: 300;
-  font-size: ${props => props.theme.blog.dateFontSize};
-  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
-      font-size: ${props => props.theme.blog.dateFontSizeSmall};
+  margin: 0;
+  
+  @media screen and (min-width: 600px) {
+    font-size: 1.25em;
+    line-height: 1.5;
   }
 `
 
