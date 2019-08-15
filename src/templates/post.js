@@ -32,6 +32,10 @@ const PostContent = styled.div`
   padding: 1rem .5rem 1.45rem;
 `
 
+const Date = styled.h3`
+  font-weight: bold;
+`
+
 function generateImageMap(edges) {
   const imageMap = {};
   edges.forEach(edge => {
@@ -61,6 +65,7 @@ const Post = ({pageContext: {slug},
       <ImageMap.Provider value={imageMap}>
         <Content>
           <PostContent>
+            <Date>{post.date}</Date>
             <MDXRenderer>{postNode.body}</MDXRenderer>
           </PostContent>
 
@@ -94,7 +99,7 @@ export const postQuery = graphql`
       frontmatter {
         title
         description
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "MM/DD/YYYY")
         image {
           childImageSharp {
             fluid(maxWidth: 1500, quality: 60) {
