@@ -40,15 +40,41 @@ const Post = styled.li`
   }
 `
 
+const Metadata = styled.div`
+  padding: .5rem .5rem .5rem .5rem;
+`
+
 const Title = styled.h3`
+  margin: 0;
+  font-weight: 500;
+  
+  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+    font-size: 1.5rem;
+    line-height: 1.3;
+  }
 `
 
 const DateString = styled.h6`
+  margin: 0;
+  font-weight: 400;
   color: gray;
+  line-height: 1.5;
+  
+  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+    font-size: .75rem;
+  }
 `
 
 
-const Description = styled.h5`
+const Description = styled.p`
+  font-size: .75rem;
+  line-height: 1.5;
+  margin: 0;
+  padding-top: .5rem;
+  
+  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+    font-size: .9rem;
+  }
 `
 
 const Card = ({
@@ -58,7 +84,6 @@ const Card = ({
                 date,
                 description,
                 favorite,
-                ...props
               }) => {
 
     const daysRecent = 3,
@@ -68,10 +93,12 @@ const Card = ({
     return (
     <Post>
       <Link to={`${slug}/`}>
-        <Img fluid={image.fluid} backgroundColor={'#eeeeee'} />
-        <Title>{title}</Title>
-        <DateString>{date}</DateString>
-        <Description>{description}</Description>
+        <Img fluid={image.fluid}/>
+        <Metadata>
+          <Title>{title}</Title>
+          <DateString>{date}</DateString>
+          <Description>{description}</Description>
+        </Metadata>
       </Link>
       {isNew && <Ribbon text={"New!"} color={"#308014"}/>}
       {(favorite && !isNew) && <Ribbon text={"Favorite"} color={"#8B0000"}/>}

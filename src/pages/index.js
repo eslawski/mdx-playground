@@ -10,9 +10,8 @@ import SEO from "../components/Seo"
 
 const Wrapper = styled.section`
   margin: 0 auto auto;
-  width: 100%;
   max-width: ${props => props.theme.maxWidths.index};
-  padding: 3em 1.5em 2em;
+  padding: 1.5em 1.5em 2em 1.5rem;
   flex-grow: 1;
 `
 
@@ -30,7 +29,7 @@ class BlogIndex extends React.Component {
 
     return (
       <Layout>
-        <SEO title={"All Blogs Test"}/>
+        <SEO title={"All Blogs"}/>
         <Wrapper>
           <PageHeading>Blogs</PageHeading>
           <CardList>

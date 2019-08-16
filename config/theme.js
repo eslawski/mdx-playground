@@ -11,7 +11,7 @@ const blog = {
 }
 
 const maxWidths = {
-  index: "800px",
+  index: "1000px",
   post: "800px",
   imagesSection: "1000px"
 }

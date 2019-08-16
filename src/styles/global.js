@@ -16,6 +16,10 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
   }
+  
+  p {
+    color: rgba(0, 0, 0, .8);
+  }
 
   .video-wrapper {
     position:relative;
