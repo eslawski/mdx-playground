@@ -18,8 +18,8 @@ const PostContent = styled.div`
 function generateImageMap(edges) {
   const imageMap = {};
   edges.forEach(edge => {
-    const { node: { childImageSharp } } = edge;
-    imageMap[childImageSharp.lowRes.originalName] = childImageSharp
+    const { node: { childImageSharp, fields: {captureDate} } } = edge;
+    imageMap[childImageSharp.lowRes.originalName] = {captureDate: captureDate, ...childImageSharp}
   })
 
   return imageMap
@@ -69,13 +69,16 @@ export const postQuery = graphql`
         }
       }
     }
-    allFile(filter: { relativeDirectory: { eq: $imageDir }}, sort: { fields: [name], order: ASC }) {
+    allFile(filter: { relativeDirectory: { eq: $imageDir }}, sort: { fields: [fields___captureDate], order: ASC }) {
       edges {
         node {
           name
           birthTime
           relativePath
           relativeDirectory
+          fields {
+            captureDate
+          }
           childImageSharp {
              id
              lowRes: fluid(maxWidth: 350, quality: 70) {

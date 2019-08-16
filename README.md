@@ -27,6 +27,7 @@ npm run deploy
 
 ### Gotchas
 * Sometimes Gatsby gets confused. Sometimes a `gatsby clean` and rebuild can fix things. It essentially deletes the `.cache` and `/public` directories.
+* I think reading the exif data sometimes generates a copy of the image which causes Gatsby to think it needs to reprocess the image. Worth more investigation.
 
 ### Future Ideas
 * Add categories to posts

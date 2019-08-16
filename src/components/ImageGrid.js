@@ -39,6 +39,7 @@ const ImageGrid = ({imageNames, columns = 4, spacing = 1, width = "100%"}) => {
                                 imageName={image.lowRes.originalName}
                                 width={width}
                                 forceHighRes={forceHighRes}
+                                captureDate={image.captureDate}
                       />
                     })
                   })
