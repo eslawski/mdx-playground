@@ -52,10 +52,12 @@ const Title = styled.h1`
   margin: 0;
   font-size: 3rem;
   line-height: 1.4;
+  padding: 0 1.5rem;
   
   @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
-    line-height: 1.5;
+    line-height: 1.1;
     font-size: 1.6rem;
+    padding-bottom: .25rem;
   }
 `
 
