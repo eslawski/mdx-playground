@@ -12,17 +12,14 @@ import AllImages from "../components/AllImages"
 const PostContent = styled.div`
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
-  padding: 2rem 1.0875rem 1.45rem;
-  
+  padding: 1rem 1.0875rem 1.45rem;
 `
 
 function generateImageMap(edges) {
   const imageMap = {};
   edges.forEach(edge => {
     const { node: { childImageSharp } } = edge;
-
     imageMap[childImageSharp.lowRes.originalName] = childImageSharp
-
   })
 
   return imageMap

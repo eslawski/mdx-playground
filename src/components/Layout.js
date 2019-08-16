@@ -1,33 +1,27 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-
 import theme from '../../config/theme'
 import Header from './Header'
-import {ThemeProvider} from 'styled-components'
-import './custom-medium-zoom/mediumZoomStyles.css'
+import styled, {ThemeProvider} from 'styled-components'
 import GlobalStyle from '../styles/global'
 
+import './custom-medium-zoom/mediumZoomStyles.css'
 
-class Layout extends React.Component {
+const Wrapper = styled.div`
+  margin-bottom: 2rem;
+`
 
-  render() {
-    const {children} = this.props;
-    return (
-      <>
-        <ThemeProvider theme={theme}>
-          <>
-            <Header/>
-            {children}
-          </>
-        </ThemeProvider>
-        <GlobalStyle theme={theme}/>
-      </>
-    )
-  }
-}
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+const Layout = ({children}) => {
+  return (
+    <>
+      <ThemeProvider theme={theme}>
+        <Wrapper>
+          <Header/>
+          {children}
+        </Wrapper>
+      </ThemeProvider>
+      <GlobalStyle theme={theme}/>
+    </>
+  )
 }
 
 export default Layout

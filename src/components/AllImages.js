@@ -6,7 +6,7 @@ import ImageGrid from "./ImageGrid"
 
 
 const GridWrapper = styled.div`
-  padding: 0 1rem 2rem 1rem;
+  padding: 0 1rem;
   max-width: ${props => props.theme.maxWidthImageSection};
   margin: auto;
 `
@@ -23,13 +23,14 @@ const AllImages = ({imageNames}) => {
       <AllImagesTitle>All Images</AllImagesTitle>
       <ThemeConsumer>
         {(theme) => {
-          return <MediaQuery maxWidth={theme.breakpoints.phone}>
-            {(matches) => {
-              let columns = matches ? 3 : 4;
-              return <ImageGrid imageNames={imageNames} columns={columns}/>
-            }}
-          </MediaQuery>
-        }
+          return (
+            <MediaQuery maxWidth={theme.breakpoints.phone}>
+              {(matches) => {
+                let columns = matches ? 3 : 4;
+                return <ImageGrid imageNames={imageNames} columns={columns}/>
+              }}
+            </MediaQuery>
+          )}
         }
       </ThemeConsumer>
     </GridWrapper>

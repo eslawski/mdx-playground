@@ -27,7 +27,7 @@ const theme = {
   blog,
   headerHeight: "50px",
   maxWidth: '800px',
-  maxWidthImageSection: '1200px'
+  maxWidthImageSection: '1000px'
 }
 
 export default theme
