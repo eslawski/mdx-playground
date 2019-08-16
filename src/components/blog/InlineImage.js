@@ -29,7 +29,7 @@ const InlineImage = ({ imageName }) => {
         imageMap => {
           const image = imageMap[imageName],
                 isPortrait = image.lowRes.aspectRatio <= .75,
-                isPano = image.lowRes.aspectRatio > 2,
+                isPano = image.lowRes.aspectRatio > 1.75,
                 forceHighRes = !isPortrait; // Force high res when a landscape image exists on it's own
 
           return (

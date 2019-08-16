@@ -41,16 +41,17 @@ const Post = styled.li`
 `
 
 const Metadata = styled.div`
-  padding: .5rem .5rem .5rem .5rem;
+  padding: .5rem 1rem .5rem .5rem;
 `
 
 const Title = styled.h3`
   margin: 0;
   font-weight: 500;
+  line-height: 1.2;
+  padding-bottom: .25rem;
   
   @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
-    font-size: 1.5rem;
-    line-height: 1.3;
+    font-size: 1.2rem;
   }
 `
 

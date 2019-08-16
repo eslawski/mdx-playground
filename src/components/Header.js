@@ -36,6 +36,7 @@ const SiteTitle = styled.h5`
   height: 100%;
   position: absolute;  
   right: 0;
+  padding-right: .5rem;
 `
 
 
