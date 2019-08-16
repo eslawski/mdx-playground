@@ -4,27 +4,10 @@ import styled from 'styled-components'
 import {MDXRenderer} from 'gatsby-plugin-mdx'
 import Layout from "../components/Layout";
 import {ImageMap } from "../components/contexts/image-map-context"
-import ImageGrid from "../components/ImageGrid"
 import Hero from "../components/Hero"
 import SEO from "../components/Seo"
-import MediaQuery from 'react-responsive';
-import { ThemeConsumer } from 'styled-components'
+import AllImages from "../components/AllImages"
 
-
-const Content = styled.article`
-`
-
-const GridWrapper = styled.div`
-  padding: 0 1rem 2rem 1rem;
-  max-width: ${props => props.theme.maxWidthImageSection};
-  margin: auto;
-`
-
-const AllImagesTitle = styled.h2`
-  font-weight: bold;
-  margin-bottom: 1rem;
-  border-bottom: 2px solid black;
-`
 
 const PostContent = styled.div`
   max-width: ${props => props.theme.maxWidth};
@@ -60,26 +43,10 @@ const Post = ({pageContext: {slug},
       <SEO title={post.title} description={post.description}/>
       <Hero title={post.title} date={post.date} image={post.image.childImageSharp}/>
       <ImageMap.Provider value={imageMap}>
-        <Content>
-          <PostContent>
-            <MDXRenderer>{postNode.body}</MDXRenderer>
-          </PostContent>
-
-          <GridWrapper>
-            <AllImagesTitle>All Images</AllImagesTitle>
-            <ThemeConsumer>
-              {(theme) => {
-                  return <MediaQuery maxWidth={theme.breakpoints.phone}>
-                    {(matches) => {
-                      let columns = matches ? 3 : 4;
-                      return <ImageGrid imageNames={Object.keys(imageMap)} columns={columns}/>
-                    }}
-                  </MediaQuery>
-                }
-              }
-            </ThemeConsumer>
-          </GridWrapper>
-        </Content>
+        <PostContent>
+          <MDXRenderer>{postNode.body}</MDXRenderer>
+        </PostContent>
+        <AllImages imageNames={Object.keys(imageMap)}/>
       </ImageMap.Provider>
     </Layout>
   )
