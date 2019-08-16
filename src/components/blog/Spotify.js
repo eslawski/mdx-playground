@@ -1,18 +1,10 @@
 import React from 'react'
-import styled from 'styled-components'
+import InlineMediaWrapper from "./InlineMediaWrapper"
 
-
-const CenteredDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: ${props => props.theme.blog.spacing};
-  margin-left: auto;
-  margin-right: auto;
-`
 
 const Spotify = ({ songUrl }) => {
   return (
-    <CenteredDiv>
+    <InlineMediaWrapper>
       <iframe
         title={songUrl}
         data-song-info=""
@@ -24,7 +16,7 @@ const Spotify = ({ songUrl }) => {
         allowTransparency="true"
         allow="encrypted-media">
       </iframe>
-    </CenteredDiv>
+    </InlineMediaWrapper>
   )
 }
 

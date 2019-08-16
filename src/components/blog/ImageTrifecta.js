@@ -2,21 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import Image from "../Image"
 import {ImageMap} from "../contexts/image-map-context"
+import InlineMediaWrapper from "./InlineMediaWrapper"
 
 
 const Grid = styled.div`
-  width: 70%;
-  margin: auto auto;
+  width: 100%;
   display: grid;
   grid-template-columns: ${props => props.gridConfig.templateColumns};
   grid-template-areas: ${props => props.gridConfig.gridAreas};
   grid-gap: 2px;
-  margin-bottom: ${props => props.theme.blog.spacing};
-  
-    width: ${props => props.theme.blog.inlineMediaWidth};
-  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
-      width: ${props => props.theme.blog.inlineMediaWidthSmall};
-  }
 `
 
 const TopImage = styled.div`
@@ -41,6 +35,7 @@ const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName, orient
 
 
           /**
+           * TODO:
            * There is a slight bug with the portrait image being too short because it does not take into account
            * the height of the grid gap between the two landscape images. The math is somewhat complex, but I think it
            * can be simplified. Check out this article: https://medium.com/buildit/hardcore-css-calc-bdfb0162993c
@@ -76,11 +71,13 @@ const ImageTrifecta = ({topImageName, bottomImageName, portraitImageName, orient
           const gridConfig = orientation === 'right' ? configurations.rightPortrait : configurations.leftPortrait
 
           return (
-            <Grid gridConfig={gridConfig}>
-              <TopImage><Image imageName={topImageName} margin={0}/></TopImage>
-              <BottomImage><Image imageName={bottomImageName} margin={0}/></BottomImage>
-              <PortraitImage><Image imageName={portraitImageName} margin={0}/></PortraitImage>
-            </Grid>
+            <InlineMediaWrapper>
+              <Grid gridConfig={gridConfig}>
+                <TopImage><Image imageName={topImageName} margin={0}/></TopImage>
+                <BottomImage><Image imageName={bottomImageName} margin={0}/></BottomImage>
+                <PortraitImage><Image imageName={portraitImageName} margin={0}/></PortraitImage>
+              </Grid>
+            </InlineMediaWrapper>
           )
         }
       }

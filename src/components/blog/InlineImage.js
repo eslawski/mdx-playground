@@ -2,26 +2,23 @@ import React from 'react'
 import Image from "../Image"
 import styled from 'styled-components'
 import {ImageMap} from "../contexts/image-map-context"
+import InlineMediaWrapper from "./InlineMediaWrapper"
 
-
-const CenteredDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: ${props => props.theme.blog.spacing};
-  margin-left: auto;
-  margin-right: auto;
-  
+const Sizer = styled.div`
   ${({isPortrait, theme}) => isPortrait && `
-    width: ${theme.blog.inlineMediaPortraitWidth};
+    width: 40%;
     @media screen and (max-width: ${theme.breakpoints.phone}) {
-      width: ${theme.blog.inlineMediaPortraitWidthSmall};
+      width: 60%
     }
   `}
   ${({isPortrait, theme}) => !isPortrait && `
-      width: 50%;
+      width: 80%;
       @media screen and (max-width: ${theme.breakpoints.phone}) {
-        width: ${theme.blog.inlineMediaWidthSmall};
+        width: 100%;
       }
+  `}
+  ${({isPano}) => isPano && `
+    width: 100%;
   `}
 `
 
@@ -32,12 +29,15 @@ const InlineImage = ({ imageName }) => {
         imageMap => {
           const image = imageMap[imageName],
                 isPortrait = image.lowRes.aspectRatio <= .75,
+                isPano = image.lowRes.aspectRatio > 2,
                 forceHighRes = !isPortrait; // Force high res when a landscape image exists on it's own
 
           return (
-            <CenteredDiv isPortrait={isPortrait}>
-              <Image imageName={imageName} forceHighRes={forceHighRes}/>
-            </CenteredDiv>
+            <InlineMediaWrapper>
+              <Sizer isPortrait={isPortrait} isPano={isPano}>
+                <Image imageName={imageName} forceHighRes={forceHighRes}/>
+              </Sizer>
+            </InlineMediaWrapper>
           )
         }
       }
