@@ -1,27 +1,13 @@
-# Gatsby Starter MDX Basic
+# Personal Website
 
-View this starter [live on Netlify](https://gatsby-starter-mdx-basic.netlify.com/)
+Welcome to my website. This website built from scratch using [gatsbyJS](https://www.gatsbyjs.org/)
 
-This starter build MDX support into the
-[gatsby-default-starter](https://github.com/gatsbyjs/gatsby-starter-default). Its
-README also applies here.
+This image heavy blog heavily utilizes the image processing features of Gatsby and takes advantage of `mdx` to create complex reusable components that can be used in markdown.
 
-1. Create a new Gatsby site using this starter
-
+### Developing locally
+Currently requires node v10.
 ```sh
-gatsby new my-site https://github.com/ChristopherBiscardi/gatsby-starter-mdx-basic
+nvm use 10
+npm install
+gatsby develop
 ```
-
-2. Install dependencies
-
-```sh
-yarn
-```
-
-3. Run the develop script
-
-```sh
-yarn develop
-```
-
-4. Edit Page 2 in `src/pages/page-2.mdx`
