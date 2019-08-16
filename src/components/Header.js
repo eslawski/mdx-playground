@@ -12,11 +12,32 @@ const Menu = styled.header`
 
 const MenuItems = styled.div`
   display: flex;
+  position: relative;
   width: 100%;
   max-width: ${props => props.theme.maxWidths.index};
   font-size: 1.15rem;
   margin-bottom: 0;
 `
+
+const MenuItemsRight = styled.div`
+  display: flex;
+  width: 100%;
+  max-width: ${props => props.theme.maxWidths.index};
+  font-size: 1.15rem;
+  margin-bottom: 0;
+`
+
+const SiteTitle = styled.h5`
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: 300;
+  margin: 0;
+  height: 100%;
+  position: absolute;  
+  right: 0;
+`
+
 
 const linkStyle = {
   display: "flex",
@@ -34,6 +55,8 @@ const Header = () => {
         <Link to="/" style={linkStyle}>
           Home
         </Link>
+        <SiteTitle>evanslawski.com</SiteTitle>
+
       </MenuItems>
     </Menu>
   )

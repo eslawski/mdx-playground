@@ -38,8 +38,12 @@ const GlobalStyle = createGlobalStyle`
     }
 }
 
-header div a:hover {
+header div a {
   background-color: green;
+  
+  &:hover {
+    color: black !important;
+  }
 }
   
 `
