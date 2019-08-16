@@ -19,14 +19,6 @@ const MenuItems = styled.div`
   margin-bottom: 0;
 `
 
-const MenuItemsRight = styled.div`
-  display: flex;
-  width: 100%;
-  max-width: ${props => props.theme.maxWidths.index};
-  font-size: 1.15rem;
-  margin-bottom: 0;
-`
-
 const SiteTitle = styled.h5`
   display: flex;
   align-items: center;
