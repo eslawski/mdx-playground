@@ -20,7 +20,7 @@ class Layout extends React.Component {
             {children}
           </>
         </ThemeProvider>
-        <GlobalStyle/>
+        <GlobalStyle theme={theme}/>
       </>
     )
   }

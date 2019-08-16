@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 110%;
     line-height: 1.75;
     
-      @media screen and (min-width: 600px) {
+      @media screen and (min-width: ${props => props.theme.breakpoints.phone}) {
         font-size: 120%;
         line-height: 2rem;
       }

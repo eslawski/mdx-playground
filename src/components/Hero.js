@@ -14,13 +14,14 @@ const BgImg = styled(Img)`
   width: 100%;
   z-index: -1;
   min-height: 300px;
-  max-height: calc(100vh - ${props => props.theme.headerHeight}); // clips the height of the image on large screens
+  max-height: calc(100vh - ${props => props.theme.headerHeight});
   height: auto;
   
   & > img {
     object-fit: ${props => props.fit || 'cover'} !important;
     object-position: ${props => props.position || '50% 50%'} !important;
   }
+  
   &::before {
     content: '';
     background: rgba(0, 0, 0, 0.35);
@@ -51,7 +52,7 @@ const Title = styled.h1`
   margin: 0;
   line-height: 1.5;
   
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.phone}) {
     font-size: 3rem;
     line-height: 1.4;
   }
@@ -61,7 +62,7 @@ const Date = styled.h4`
   font-weight: 300;
   margin: 0;
   
-  @media screen and (min-width: 600px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.phone}) {
     font-size: 1.25em;
     line-height: 1.5;
   }
@@ -70,10 +71,7 @@ const Date = styled.h4`
 const Hero = ({ title, date, image }) => {
   return (
     <Wrapper>
-      <BgImg
-        fluid={image.fluid}
-        backgroundColor={'#eeeeee'}
-      />
+      <BgImg fluid={image.fluid}/>
       <HeroContent>
         <Title>{title}</Title>
         <Date>{date}</Date>
