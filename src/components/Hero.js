@@ -52,8 +52,8 @@ const Title = styled.h1`
   line-height: 1.5;
   
   @media screen and (min-width: 600px) {
-    font-size: 2.5rem;
-    line-height: 1.3;
+    font-size: 3rem;
+    line-height: 1.4;
   }
 `
 
