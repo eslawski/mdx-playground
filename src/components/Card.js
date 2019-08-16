@@ -1,9 +1,9 @@
-
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Ribbon from "./Ribbon"
+import { ThemeConsumer } from 'styled-components'
 
 const Post = styled.li`
   list-style: none;
@@ -100,8 +100,18 @@ const Card = ({
           <Description>{description}</Description>
         </Metadata>
       </Link>
-      {isNew && <Ribbon text={"New!"} color={"#308014"}/>}
-      {(favorite && !isNew) && <Ribbon text={"Favorite"} color={"#8B0000"}/>}
+      <ThemeConsumer>
+        {
+          theme => {
+            return (
+              <>
+                {isNew && <Ribbon text={"New!"} color={theme.colors.green}/>}
+                {(favorite && !isNew) && <Ribbon text={"Favorite"} color={theme.colors.red}/>}
+              </>
+            )
+          }
+        }
+      </ThemeConsumer>
     </Post>
   )
 }

@@ -39,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
 }
 
 header div a {
-  background-color: green;
+  background-color: ${props => props.theme.colors.green};
   
   &:hover {
     color: black !important;

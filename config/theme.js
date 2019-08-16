@@ -1,4 +1,7 @@
-const colors = {}
+const colors = {
+  green: "#308014",
+  red: "#8B0000"
+}
 
 const breakpoints = {
   tablet: '1200px',
