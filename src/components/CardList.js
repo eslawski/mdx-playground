@@ -11,6 +11,7 @@ const List = styled.ul`
     content: '';
     flex: 0 0 32%;
   }
+  padding: 0;
 `
 
 const CardList = props => {

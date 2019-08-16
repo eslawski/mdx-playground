@@ -4,7 +4,7 @@ import styled from "styled-components"
 const CenteredDiv = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: ${props => props.theme.blog.spacing};
+  margin-bottom: 1.45rem;
   margin-left: auto;
   margin-right: auto;
   

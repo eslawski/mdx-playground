@@ -13,7 +13,7 @@ const Menu = styled.header`
 const MenuItems = styled.div`
   display: flex;
   width: 100%;
-  max-width: ${props => props.theme.maxWidth};
+  max-width: ${props => props.theme.maxWidths.index};
   font-size: 1.15rem;
   margin-bottom: 0;
 `

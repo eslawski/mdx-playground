@@ -11,7 +11,7 @@ import SEO from "../components/Seo"
 const Wrapper = styled.section`
   margin: 0 auto auto;
   width: 100%;
-  max-width: ${props => props.theme.maxWidth};
+  max-width: ${props => props.theme.maxWidths.index};
   padding: 3em 1.5em 2em;
   flex-grow: 1;
 `

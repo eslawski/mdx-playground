@@ -10,7 +10,7 @@ import AllImages from "../components/AllImages"
 
 
 const PostContent = styled.div`
-  max-width: ${props => props.theme.maxWidth};
+  max-width: ${props => props.theme.maxWidths.post};
   margin: 0 auto;
   padding: 1rem 1.0875rem 1.45rem;
 `
