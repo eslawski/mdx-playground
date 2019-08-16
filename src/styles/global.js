@@ -3,12 +3,13 @@ import { createGlobalStyle } from 'styled-components'
 const GlobalStyle = createGlobalStyle`
   html {
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
-    font-size: 110%;
-    line-height: 1.75;
+    font-size: 120%;
+    line-height: 2rem;
+    text-rendering: optimizeLegibility;
     
-      @media screen and (min-width: ${props => props.theme.breakpoints.phone}) {
-        font-size: 120%;
-        line-height: 2rem;
+      @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+        font-size: 110%;
+        line-height: 1.75;
       }
   }
   

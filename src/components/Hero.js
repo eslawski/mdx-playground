@@ -50,21 +50,23 @@ const Title = styled.h1`
   font-weight: bold;
   border-bottom: 2px solid white;
   margin: 0;
-  line-height: 1.5;
+  font-size: 3rem;
+  line-height: 1.4;
   
-  @media screen and (min-width: ${props => props.theme.breakpoints.phone}) {
-    font-size: 3rem;
-    line-height: 1.4;
+  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+    line-height: 1.5;
+    font-size: 1.6rem;
   }
 `
 
 const Date = styled.h4`
   font-weight: 300;
   margin: 0;
+  font-size: 1.25em;
+  line-height: 1.5;
   
-  @media screen and (min-width: ${props => props.theme.breakpoints.phone}) {
-    font-size: 1.25em;
-    line-height: 1.5;
+  @media screen and (max-width: ${props => props.theme.breakpoints.phone}) {
+    font-size: 1rem;
   }
 `
 
