@@ -69,7 +69,7 @@ export const postQuery = graphql`
         }
       }
     }
-    allFile(filter: { relativeDirectory: { eq: $imageDir }}, sort: { fields: [name], order: ASC }) {
+    allFile(filter: { relativePath: { regex: $imageDir }}, sort: { fields: [name], order: ASC }) {
       edges {
         node {
           name
