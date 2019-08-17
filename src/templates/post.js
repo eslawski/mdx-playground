@@ -62,14 +62,14 @@ export const postQuery = graphql`
         date(formatString: "MM/DD/YYYY")
         image {
           childImageSharp {
-            fluid(maxWidth: 1800, quality: 80) {
+            fluid(maxWidth: 1700, quality: 70) {
                 ...GatsbyImageSharpFluid
              }
           }
         }
       }
     }
-    allFile(filter: { relativeDirectory: { eq: $imageDir }}, sort: { fields: [fields___captureDate], order: ASC }) {
+    allFile(filter: { relativePath: { regex: $imageDir }}, sort: { fields: [fields___captureDate], order: ASC }) {
       edges {
         node {
           name
