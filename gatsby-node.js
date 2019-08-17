@@ -71,7 +71,7 @@ exports.createPages = async ({ graphql, actions }) => {
     // Very finky, but used in regex to match on relativePath. Helped to play
     // around with the __graphql editor locally. Noticed a difference on Windows
     // where the relativeDirectory was escaped funny. Hence using relativePath instead.
-    const imageDirRegex = n.fields.slug.concat("images").substring(1).concat("/")
+    const imageDirRegex = n.fields.slug.concat("images").concat("/")
 
     createPage({
       path: n.fields.slug,
