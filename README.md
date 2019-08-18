@@ -27,12 +27,13 @@ npm run deploy
 
 ### Gotchas
 * Sometimes Gatsby gets confused. Sometimes a `gatsby clean` and rebuild can fix things. It essentially deletes the `.cache` and `/public` directories.
-* I think reading the exif data sometimes generates a copy of the image which causes Gatsby to think it needs to reprocess the image. Worth more investigation.
-* The image grids are organized by "Date Captured". This date is pulled from each image's metadata (exif). Some photos might not have this metadata. You can debug these dates by turning on the secret function in `Image.js`.
-* Keep an eye on how reading this `exif` performs during the build process. I have noticed that it might alter the image in some way causing gatsby to think it needs to reprocess it.
-* Another potential improvement that can be made to the build process is the use the `regex` for the imageDir. Might be quicker to just use `eq` instead. Be cafeful though, because I noticed some issues with using certain queries on Windows machines.
+* Sometimes the processing of thumbnails will fail due to "Segmentation Fault". Usually a clean and retry will fix this.
 
-### Images
+### Images and Build Performance Notes
+* The image grids are organized by "Date Captured". This date is pulled from each image's metadata (exif). Some photos might not have this metadata. You can debug these dates by turning on the secret function in `Image.js`.
+* You can easily modify metadata on Windows using: https://www.colorpilot.com/exif.html
+* TODO: Does reading the exif data modify the image in some way that causes gatsby to reprocess the image?
+* TODO: How is the build performance outside of the thumbnail generation? Using the `regex` for the `imageDir` could be slowing things down just a bit. If it becomes really poor it be quicker to use `eq` instead. Be careful though, because I noticed some issues with using `relativeDir` on Windows vs Mac.
 
 ### Future Ideas
 * Add categories to posts
