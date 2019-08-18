@@ -6,12 +6,15 @@ import {ImageMap} from "./contexts/image-map-context"
  * Used for debugging purposes
  * @param img
  */
-function showTimestamps(img) {
-  let div = document.createElement("div");
-  div.style.color = "white"
-  div.style.position = "relative"
-  div.innerHTML = img.getAttribute("data-capture-date");
-  img.parentElement.parentElement.appendChild(div);
+function showTimestampsDebug(img) {
+  let debug = false;
+  if (debug) {
+    let div = document.createElement("div");
+    div.style.color = "white"
+    div.style.position = "relative"
+    div.innerHTML = img.getAttribute("data-capture-date");
+    img.parentElement.parentElement.appendChild(div);
+  }
 }
 
 const Image = ({ imageName, width = "100%", margin = 1, forceHighRes = false }) => {
@@ -41,7 +44,7 @@ const Image = ({ imageName, width = "100%", margin = 1, forceHighRes = false }) 
                 img.setAttribute('data-srcset-hd', highRes.srcSet);
                 img.setAttribute('data-sizes-hd', highRes.sizes);
                 img.setAttribute('data-capture-date', image.captureDate)
-                // showTimestamps(img)
+                showTimestampsDebug(img)
 
                 img.style.transition = ""; // Hack that prevents image from closing
                 window.zoomer.attach(img);
