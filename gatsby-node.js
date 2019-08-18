@@ -1,4 +1,6 @@
 const { createFilePath } = require(`gatsby-source-filesystem`)
+const readExif = require('read-exif');
+
 
 
 // graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
@@ -15,8 +17,24 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
   if (node.internal.type === 'Mdx') {
     const slug = createFilePath({ node, getNode, basePath: `blogs` })
-    console.log("Path created: " + slug)
     createNodeField({ node, name: 'slug', value: slug })
+  } else if (node.internal.type === 'File') {
+    const imageTypes = [".jpg", ".jpeg", ".png"]
+    if (imageTypes.includes(node.ext.toLowerCase())) {
+      readExif(node.absolutePath).then(response => {
+        const exif = response.Exif;
+        if (exif) {
+          createNodeField({
+            node,
+            name: "captureDate",
+            value: exif['36867'] // https://www.exiv2.org/tags.html
+          });
+        } else {
+          console.log("Could not determine timestamp for: " + node.absolutePath)
+        }
+
+      })
+    }
   }
 }
 
@@ -53,7 +71,7 @@ exports.createPages = async ({ graphql, actions }) => {
     // Very finky, but used in regex to match on relativePath. Helped to play
     // around with the __graphql editor locally. Noticed a difference on Windows
     // where the relativeDirectory was escaped funny. Hence using relativePath instead.
-    const imageDirRegex = n.fields.slug.concat("images").substring(1).concat("/")
+    const imageDirRegex = n.fields.slug.concat("images").concat("/")
 
     createPage({
       path: n.fields.slug,
