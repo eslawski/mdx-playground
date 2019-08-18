@@ -28,6 +28,11 @@ npm run deploy
 ### Gotchas
 * Sometimes Gatsby gets confused. Sometimes a `gatsby clean` and rebuild can fix things. It essentially deletes the `.cache` and `/public` directories.
 * I think reading the exif data sometimes generates a copy of the image which causes Gatsby to think it needs to reprocess the image. Worth more investigation.
+* The image grids are organized by "Date Captured". This date is pulled from each image's metadata (exif). Some photos might not have this metadata. You can debug these dates by turning on the secret function in `Image.js`.
+* Keep an eye on how reading this `exif` performs during the build process. I have noticed that it might alter the image in some way causing gatsby to think it needs to reprocess it.
+* Another potential improvement that can be made to the build process is the use the `regex` for the imageDir. Might be quicker to just use `eq` instead. Be cafeful though, because I noticed some issues with using certain queries on Windows machines.
+
+### Images
 
 ### Future Ideas
 * Add categories to posts
