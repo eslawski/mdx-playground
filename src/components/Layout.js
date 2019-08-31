@@ -7,11 +7,11 @@ import GlobalStyle from '../styles/global'
 import './custom-medium-zoom/mediumZoomStyles.css'
 
 const Wrapper = styled.div`
-  margin-bottom: 2rem;
 `
 
 const Footer = styled.div`
   text-align: center;
+  font-size: .75rem;
 `
 
 const Layout = ({children}) => {
