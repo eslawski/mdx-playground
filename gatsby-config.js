@@ -7,6 +7,16 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-mdx',
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-prismjs`,
+          }
+        ]
+      }
+    },
     'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-filesystem`,

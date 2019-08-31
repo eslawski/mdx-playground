@@ -1,4 +1,5 @@
 const mediumZoom = require('./src/components/custom-medium-zoom/mediumZoom')
+require("prismjs/themes/prism-tomorrow.css")
 
 
 exports.onClientEntry = () => {
