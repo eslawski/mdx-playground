@@ -6,7 +6,6 @@ import ImageGrid from "./ImageGrid"
 
 
 const GridWrapper = styled.div`
-  padding: 0 1rem;
   max-width: ${props => props.theme.maxWidths.imagesSection};
   margin: auto;
 `
@@ -14,6 +13,8 @@ const GridWrapper = styled.div`
 const AllImagesTitle = styled.h2`
   font-weight: bold;
   margin-bottom: 1rem;
+  padding-left: .25rem;
+  line-height: 2.25rem;
   border-bottom: 2px solid black;
 `
 
