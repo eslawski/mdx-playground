@@ -11,4 +11,62 @@ import InlineGrid from '../../src/components/blog/InlineGrid'
 import Spotify from '../../src/components/blog/Spotify'
 import Youtube from '../../src/components/blog/Youtube'
 
-About a year ago Katie and I were just getting ready to embark on an trip Out West. On the itentery was the Grand Canyon, Lake Powell, Bryce Canyon, Zion National Park, and ending in Las Vegas. Knowing this was probably going to be the trip of a lifetime, I pondered ways we could document our adventures.
+
+### Background
+
+About a year ago, Katie and I were just getting ready to embark on a trip out west. On our itinerary was the [Grand Canyon](https://evanslawski.com/03-grand-canyon/), [Lake Powell](https://evanslawski.com/06-lake-powell/), [Bryce Canyon](https://evanslawski.com/07-bryce-canyon/), [Zion National Park](https://evanslawski.com/10-celebrating-two-years/), and ending in [Las Vegas](https://evanslawski.com/13-viva-las-vegas/). Knowing this was probably going to be the trip of a lifetime, I pondered ways we could document our adventures.
+
+Being a web developer, I naturally gravitated towards the idea of a custom website. So over the course of a couple weeks I spent time building a photo centric blog using [Jekyll](https://jekyllrb.com/).
+
+Jekyll is a popular choice for creating static websites (especially blogs). Its powerful templating framework makes it easy to create webpages using plain old HTML/CSS/Javascript. Each blog is then written in a Markdown file. At build time, Jekyll will take each of your Markdown files and magically generate static html pages using your templates.
+
+[pic of old website]
+
+You can check out a live version of my decommissioned blog link [here](https://eslawski.github.io/portfolio-v2/)! ([Github](https://github.com/eslawski/portfolio-v2)).
+
+With the website complete, Katie and I departed on our vacation out west. I challenged myself to blog each day in an effort to capture each and every moment while it was fresh in our heads. Overall I was extremely happy with how it turned out.
+
+> There was just one major problem though
+
+It was taking much longer to write a blog than I anticipated. The actual writing of the blog was easy. Believe it or not, the most time intensive part was actually getting the images onto the site.
+
+Here is what that process looked like each day:
+
+1. Select images
+2. Prefix all the file names with a number so they appear in order
+3. Run the images through an optimizer for mobile
+4. Run the images through an optimizer for desktop
+5. List out all the filenames in the markdown file so that Jekyll can pick them up (hope you don’t make a typo)
+6. Generate the “fade in” effect for the main image
+7. Base64 encode the “fade in” image and paste that in the markdown file
+
+_approximate time: **30min**_
+
+I won’t get into the technical details here, but dealing with images on a website can very very tricky business. **Unoptimized images is the #1 cause of a slow website.** With 30+ images in each of my blogs, I needed to ensure a seamless user experience.
+
+Coming home from that trip, I was successful in my “one blog a day” challenge, but it wasn’t easy. I just knew there had to be a way to streamline the process.
+
+<br/>
+
+### Making it Better
+
+Fast forward about a year, Katie and I have an upcoming trip to Europe this September. With a strong urge to continue to documenting our vacations, I just knew the old blog was not going to cut it.
+
+Earlier in the year I learned of a new framework for building websites called [GatsbyJS](https://www.gatsbyjs.org/). This React based framework provides a build API that allows you to source data from practically anywhere and access it later using GraphQL. I quickly realized how transformative it could be for my blog writing process. Being a React fanboy, it was practically a match made in heaven.
+
+Gatsby and Jekyll are similar in that they are both static site generators. You make some templates for your blogs, then you write them using Markdown etc. However, where Gatsby truly stood out was in its [image processing](https://www.gatsbyjs.org/packages/gatsby-image/) capabilities.
+
+Given an image, Gatsby will do all of this automagically at build time:
+-   Automatically detect all image files (and store filenames in GraphQL)
+-   Generate 4 different sizes for all screen types
+-   Optimize them
+-   Free “blur up” effect
+-   Generate an html ```<picture>``` element with all the features above
+
+Now that my site has been migrated over to using Gatsby, displaying images for each blog is as simple as dragging and dropping them into a folder. Gatsby handles the rest, and I can get back to vacationing.
+
+_approximate time: **< 2min**_
+
+I could not be more happy with how the new blog turned out. GatsbyJS is an insanely fun framework to work with, and I look forward to using it for more personal projects
+
+Check out the repo for this website [here](https://github.com/eslawski/personal-website).
