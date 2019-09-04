@@ -23,7 +23,7 @@ const Layout = ({children}) => {
           {children}
           <Footer>
             <p>
-              &copy; 2019 Evan Slawski. Built using GatsbyJS.{" "}
+              &copy; 2019 Evan Slawski. Built with GatsbyJS.{" "}
               <a href="https://github.com/eslawski/personal-website">Github</a>
             </p>
           </Footer>
