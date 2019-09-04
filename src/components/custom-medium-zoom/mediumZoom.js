@@ -200,13 +200,11 @@ const mediumZoom = (selector, options = {}) => {
                     viewportWidth =
                         container.width -
                         container.left -
-                        container.right -
-                        zoomOptions.margin * 2
+                        container.right /*- zoomOptions.margin * 2*/
                     viewportHeight =
                         container.height -
                         container.top -
-                        container.bottom -
-                        zoomOptions.margin * 2
+                        container.bottom - zoomOptions.margin * 2
                 } else {
                     // The container is given as an element
                     const zoomContainer = isNode(zoomOptions.container)
@@ -230,7 +228,7 @@ const mediumZoom = (selector, options = {}) => {
                 }
             }
 
-            viewportWidth = viewportWidth || container.width - zoomOptions.margin * 2
+            viewportWidth = viewportWidth || container.width/* - zoomOptions.margin * 2*/
             viewportHeight =
                 viewportHeight || container.height - zoomOptions.margin * 2
 
@@ -255,7 +253,7 @@ const mediumZoom = (selector, options = {}) => {
             const translateX =
                 (-left +
                     (viewportWidth - width) / 2 +
-                    zoomOptions.margin +
+                    //zoomOptions.margin +
                     container.left) /
                 scale
             const translateY =
