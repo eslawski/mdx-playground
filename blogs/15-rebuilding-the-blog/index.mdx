@@ -1,8 +1,8 @@
 ---
-date: "2019-08-30"
+date: "2019-07-31"
 title: "Rebuilding the Blog"
 image: "./images/image_tiles.jpg"
-description: "Rebuilding my personal website using React and GatsbyJS to reduce my \"time-to-blog\" by 93%"
+description: "Rebuilding my personal website using React and GatsbyJS."
 ---
 
 import InlineImage from '../../src/components/blog/InlineImage'
@@ -33,12 +33,12 @@ It was taking much longer to write a blog than I anticipated. The actual writing
 Here is what that process looked like each day:
 
 1. Select images
-2. Prefix all the file names with a number so they appear in order
-3. Run the images through an optimizer for mobile
-4. Run the images through an optimizer for desktop
-5. List out all the filenames in the markdown file so that Jekyll can pick them up (hope you don’t make a typo)
-6. Generate the “fade in” effect for the main image
-7. Base64 encode the “fade in” image and paste that in the markdown file
+2. Prefix all the file names in order
+3. Optimize images for mobile
+4. Optimize images for desktop
+5. List in order all the images names
+6. Generate the “fade in” image
+7. Base64 encode the “fade in” image
 
 _approximate time: **30min**_
 
@@ -50,18 +50,18 @@ Coming home from that trip, I was successful in my “one blog a day” challeng
 
 ### Making it Better
 
-Fast forward about a year, Katie and I have an upcoming trip to Europe this September. With a strong urge to continue to documenting our vacations, I just knew the old blog was not going to cut it.
+Fast forward about a year, Katie and I have an upcoming trip to Europe this September. With a strong urge to continue documenting our vacations, I just knew the old blog was not going to cut it.
 
 Earlier in the year I learned of a new framework for building websites called [GatsbyJS](https://www.gatsbyjs.org/). This React based framework provides a build API that allows you to source data from practically anywhere and access it later using GraphQL. I quickly realized how transformative it could be for my blog writing process. Being a React fanboy, it was practically a match made in heaven.
 
 Gatsby and Jekyll are similar in that they are both static site generators. You make some templates for your blogs, then you write them using Markdown etc. However, where Gatsby truly stood out was in its [image processing](https://www.gatsbyjs.org/packages/gatsby-image/) capabilities.
 
 Given an image, Gatsby will do all of this automagically at build time:
--   Automatically detect all image files (and store filenames in GraphQL)
+-   Detect all image files and store in GraphQL
 -   Generate 4 different sizes for all screen types
 -   Optimize them
 -   Free “blur up” effect
--   Generate an html ```<picture>``` element with all the features above
+-   Generate an html ```<picture>```
 
 Now that my site has been migrated over to using Gatsby, displaying images for each blog is as simple as dragging and dropping them into a folder. Gatsby handles the rest, and I can get back to vacationing.
 

@@ -7,4 +7,12 @@
 
 <Spotify songUrl="https://open.spotify.com/embed/track/4FCOFuhLZPSXISQCF7wck5"/>
 
+Videos
+================
 <Youtube videoUrl="https://www.youtube.com/embed/_pXMJ9cL6es"/>
+
+TIPS:
+    - You need the url that has the "embed"
+    - Use Windows Photos app for lightweight merging/editing
+    - You can always trim you video on Youtube if you need
+    - Creating Youtube videos from Google Photos is much quicker

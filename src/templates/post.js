@@ -18,8 +18,14 @@ const PostContent = styled.div`
 function generateImageMap(edges) {
   const imageMap = {};
   edges.forEach(edge => {
-    const { node: { childImageSharp, fields: {captureDate} } } = edge;
-    imageMap[childImageSharp.lowRes.originalName] = {captureDate: captureDate, ...childImageSharp}
+    const { node: { childImageSharp, fields } } = edge;
+    const imageName = childImageSharp.lowRes.originalName
+
+    if (!fields || !fields.captureDate) {
+      console.log(`Error reading fields or capture date for: ${imageName}`)
+    }
+
+    imageMap[imageName] = {captureDate: fields.captureDate, ...childImageSharp}
   })
 
   return imageMap
