@@ -337,7 +337,12 @@ const mediumZoom = (selector, options = {}) => {
                 document.body.classList.add('medium-zoom--opened')
             })
 
-            active.original.classList.add('medium-zoom-image--hidden')
+            // CUSTOM: Issue with chome that causes flickering when clicking.
+            // Just delaying the hiding a bit seems to help the effect.
+            setTimeout(() => {
+                active.original.classList.add('medium-zoom-image--hidden')
+            }, 100)
+
             active.zoomed.classList.add('medium-zoom-image--opened')
 
             active.zoomed.addEventListener('click', close)
