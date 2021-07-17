@@ -1,7 +1,5 @@
 const { createFilePath } = require(`gatsby-source-filesystem`)
-const readExif = require('read-exif');
-
-
+var exifr = require('exifr')
 
 // graphql function doesn't throw an error so we have to check to check for the result.errors to throw manually
 const wrapper = promise =>
@@ -21,18 +19,19 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   } else if (node.internal.type === 'File') {
     const imageTypes = [".jpg", ".jpeg", ".png"]
     if (imageTypes.includes(node.ext.toLowerCase())) {
-      readExif(node.absolutePath).then(response => {
-        const exif = response.Exif;
-        if (exif) {
-          createNodeField({
-            node,
-            name: "captureDate",
-            value: exif['36867'] // https://www.exiv2.org/tags.html
-          });
-        } else {
-          console.log("Could not determine timestamp for: " + node.absolutePath)
-        }
-
+      exifr.parse(node.absolutePath, {exif: true})
+        .then(output => {
+          if (output) {
+            createNodeField({
+              node,
+              name: "captureDate",
+              value: output.CreateDate
+            });
+          } else {
+            console.log("Could not determine timestamp for: " + node.absolutePath)
+          }
+      }).catch(() => {
+        console.log("Could not determine timestamp for: " + node.absolutePath)
       })
     }
   }
