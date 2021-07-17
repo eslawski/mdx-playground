@@ -67,17 +67,13 @@ exports.createPages = async ({ graphql, actions }) => {
     const next = index === 0 ? null : posts[index - 1]
     const prev = index === posts.length - 1 ? null : posts[index + 1]
 
-    // Very finky, but used in regex to match on relativePath. Helped to play
-    // around with the __graphql editor locally. Noticed a difference on Windows
-    // where the relativeDirectory was escaped funny. Hence using relativePath instead.
-    const imageDirRegex = n.fields.slug.concat("images").concat("/")
 
     createPage({
       path: n.fields.slug,
       component: postTemplate,
       context: {
         slug: n.fields.slug,
-        imageDir: imageDirRegex,
+        imageDir: n.fields.slug.concat("images").substring(1),
         prev,
         next,
       },

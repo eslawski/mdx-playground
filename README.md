@@ -40,5 +40,4 @@ npm run deploy
 * The image grids are organized by "Date Captured". This date is pulled from each image's metadata (exif). Some photos might not have this metadata. You can debug these dates by turning on the secret function in `Image.js`.
 * You can easily modify metadata on Windows using: https://www.colorpilot.com/exif.html
 * TODO: Does reading the exif data modify the image in some way that causes gatsby to reprocess the image?
-* TODO: How is the build performance outside of the thumbnail generation? Using the `regex` for the `imageDir` could be slowing things down just a bit. If it becomes really poor it be quicker to use `eq` instead. Be careful though, because I noticed some issues with using `relativeDir` on Windows vs Mac.
 
