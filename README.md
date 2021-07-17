@@ -6,7 +6,7 @@ This image heavy blog heavily utilizes the image processing features of Gatsby a
 
 ### Writing Blogs
 1) Create a new directory under `/blogs`. This will also become the url slug.
-2) Add an `/images` subdirectory. Place any images that will be used in the blog here. It is okay if they are unoptimized. Gatsby will handle this at build time. **Images are automatically sorted by the date of the photo taken (exif metadata).**
+2) Add an `/images` subdirectory. Place any images that will be used in the blog here. It is okay if they are unoptimized. Gatsby will handle this at build time. **Images are automatically sorted by the date of the photo taken (exif metadata).** If photos were taken with an iPhone they might be in heic format. You can convert them on a Mac using the "Export" option. Thankfully the metadata is preserved too.
 3) Copy a sample `index.mdx` file.
 4) Complete all the required frontmatter fields.
 5) Write the blog! Use the image components contained in `/components/blog` (see [examples](https://github.com/eslawski/personal-website/blob/master/docs/samples.txt))
