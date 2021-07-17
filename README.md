@@ -20,6 +20,7 @@ gatsby develop
 
 ### Deploying
 This app is currently deployed using [Netlify](https://www.netlify.com). Due to the shear amount images contained in this static site, I am unable to utilize the CI features Netlify offers. As a result, the site must be built and deployed locally. The Netlify CLI is pretty great though in that it will hash all the files, and only upload those it needs.
+Looks like Gatsby might also be able be pull images from external locations. This might help with the repo size, but probably won't help with build performance. See https://www.gatsbyjs.com/docs/how-to/images-and-media/preprocessing-external-images/
 
 ```sh
 npm run deploy
