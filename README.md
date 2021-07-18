@@ -29,6 +29,10 @@ npm run deploy
 ### Gotchas
 * Sometimes Gatsby gets confused. Sometimes a `gatsby clean` and rebuild can fix things. It essentially deletes the `.cache` and `/public` directories.
 * Sometimes the processing of thumbnails will fail due to "Segmentation Fault". Usually a clean and retry will fix this.
+* Sometimes you might see "captureDate is null" error. Usually you just need to restart the server. I think it gets confused when you add/modify images with hot reloading.
+* This blog doesn't like heic photos taken by iPhones. You can convert them to a proper jpeg by using Mac's "export" option.
+* Sometimes the aspect ratio for portrait images is incorrect, leading to weird cropping and a bad looking grid. For whatever reason portrait images when placed in Webstorm can remain landscape. You can fix this by just rotating the images a few times on Mac.
+* Sometimes you can get some weird "frontmatter" errors. I have noticed sometimes `!` characters can be the cause. You should be able to escape them.
 
 ### Future Ideas
 * Add categories to posts

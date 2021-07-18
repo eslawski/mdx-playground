@@ -22,7 +22,7 @@ function generateImageMap(edges) {
     const imageName = childImageSharp.lowRes.originalName
 
     if (!fields || !fields.captureDate) {
-      console.log(`Error reading fields or capture date for: ${imageName}`)
+      alert(`Error reading fields or capture date for: ${imageName}`)
     }
 
     imageMap[imageName] = {captureDate: fields.captureDate, ...childImageSharp}
